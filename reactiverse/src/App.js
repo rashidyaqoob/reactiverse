@@ -1,5 +1,4 @@
 import "./App.scss";
-import Header from "./components/header/header";
 
 function App() {
   return (
@@ -7,7 +6,6 @@ function App() {
       <header className="header">
         <p>Hi react test</p>
         <div className="test">test</div>
-        <Header />
       </header>
     </div>
   );
