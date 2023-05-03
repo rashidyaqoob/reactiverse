@@ -1,1 +1,10 @@
-$body-width: 1190px;
+@import './colors.scss';
+ 
+ul {
+    list-style: none;
+}
+
+a {
+    color: $white;
+    text-decoration: none;
+}
