@@ -4,29 +4,60 @@
 }
 
 @mixin large-text {
+    line-height: 1.5;
     font-size: 64px;
 }
 
 @mixin heading-1 {
+    line-height: 1.5;
     font-size: 32px;
 }
 
 @mixin heading-2 {
+    line-height: 1.5;
     font-size: 24px;
 }
 
 @mixin heading-3 {
+    line-height: 1.5;
     font-size: 18px;
 }
 
 @mixin heading-4 {
+    line-height: 1.5;
     font-size: 16px;
 }
 
 @mixin heading-5 {
+    line-height: 1.5;
     font-size: 13px;
 }
 
 @mixin heading-6 {
     font-size: 12px;
+    line-height: 1.5;
+}
+
+@mixin heading-large-bold {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1.5;
+}
+
+@mixin heading-medium-large-bold {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.5;
+}
+
+@mixin heading-medium-bold {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.5;
+}
+
+@mixin heading-small-bold {
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1.5;
 }
