@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/header/header";
 import About from "./pages/About";
 import ContactUs from "./pages/Contact-us";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   );

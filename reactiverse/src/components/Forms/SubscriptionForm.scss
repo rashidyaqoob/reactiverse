@@ -1,0 +1,35 @@
+@import '../../base-styles/globals.scss';
+
+.subscribe-form {
+    display: flex;
+    flex-direction: column;
+    order: 2;
+
+    &__email {
+        padding: 8px;
+        border-radius: 4px;
+
+        @include heading-4;
+    }
+
+    &__btn {
+        width: 100%;
+        color: $black;
+        margin-top: 12px;
+        border-radius: 4px;
+        border: $white;
+        background-color: $secondary-color;
+        padding: 8px;
+
+        @include heading-small-bold;
+
+        &:hover {
+            background-color: $secondary-color;
+        }
+    }
+
+}
+
+.form-title {
+    margin-bottom: 12px;
+}

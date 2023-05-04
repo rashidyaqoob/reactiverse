@@ -1,0 +1,84 @@
+@import '../../base-styles/globals.scss';
+
+.footer {
+    background-color: $black;
+    color: $white;
+    padding: 64px 0;
+}
+
+.footer-primary {
+    display: grid;
+    grid-template-columns:  repeat(4, 1fr);
+    margin: 0 40px;
+    
+    &__links {
+        margin: 0 auto;
+
+        li {
+            padding: 4px 0;
+        }
+
+        @include respond((max: $mobile-potrait)){ 
+            margin: 0;
+            margin-bottom: 28px;
+        }
+    }
+
+    &__logo {
+
+        @include respond((max: $mobile-potrait)){
+            padding-bottom: 28px;
+        }
+    }
+
+    &__logo-description {
+        @include heading-5;
+    }
+
+    @include respond((min: $desktop)){
+        max-width: $body-width;
+        margin: auto;
+    }
+
+    @include respond((max: $mobile-potrait)){ 
+        grid-template-columns: repeat(1, 1fr);
+        padding: 0 36px 36px;
+        text-align: center;
+    }
+}
+
+.footer-secondary {
+
+    &__socail-links {
+        display: flex;
+        margin-top: -3rem;
+
+        li {
+            padding: 6px;
+
+            & svg:hover {
+                transform: scale(1.2);
+            }
+        }
+
+        @include respond((max: $mobile-potrait)){ 
+            justify-content: center;
+            margin-top: 28px;
+            border-top: 1px solid $gray;
+            padding: 34px 18px 12px;
+        }
+    }
+
+    &__description {
+        text-align: center;
+        
+        @include heading-5;
+
+        @include respond((min: $tablet)) {
+            grid-column: span 4;
+            border-top: 1px solid $gray;
+            margin-top: 40px;
+            padding-top: 34px;
+        }
+    }
+}
