@@ -2,13 +2,10 @@ import "./header.scss";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
+import HandleSignInBtn from "../Signup/Signup.jsx";
 
 function Header() {
   const logoText = "Reactiverse";
-  const [state, setState] = useState("Sign In For Magic");
-  function handleBtn() {
-    setState("Whoa!");
-  }
   const [isMobile, setIsMobile] = useState(window.innerWidth < 767);
   const [navbarOpen, setNavbarOpen] = useState(false);
   function handleHamburger() {
@@ -72,9 +69,7 @@ function Header() {
               </ul>
             </nav>
             <div className="user-auth">
-              <button className="user-auth__btn" onClick={handleBtn}>
-                {state}
-              </button>
+              <HandleSignInBtn />
             </div>
           </div>
           <div className="mobile-hamburger" onClick={handleHamburger}>
