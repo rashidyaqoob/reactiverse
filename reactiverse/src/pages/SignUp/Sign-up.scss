@@ -1,0 +1,100 @@
+@import '../../base-styles/globals.scss';
+
+.signup-form-container {
+    margin: 100px auto;
+    max-width: 488px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 60px;
+    border: 2px solid $primary-color;
+    border-radius: 20px;
+    background-color: #57697c;
+
+    .signup-form {
+        max-width: 768px;
+    }
+
+    input {
+        margin-bottom: 20px;
+    }
+
+    input[type='submit'] {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        max-width: 300px;
+        margin: auto;
+        transition: border-color,color,background-color 500ms;
+
+        &:hover {
+            background-color: $primary-color;
+            color: $white;
+            border-color: rgb(14, 67, 212);
+        }
+        @include respond((max: $tablet)) {
+            max-width: 276px;
+            width: 100%;
+        }
+    }
+
+    .signup-form__name,
+    .signup-form__password-container {
+        display: flex;
+        justify-content: space-between;
+        @include respond((max: $tablet)) {
+            flex-direction: column;
+        }
+    }
+
+    .signup-form__element {
+        width: 80%;
+        padding: 10px 14px;
+        border: 2px solid $primary-color;
+        color: $primary-color;
+        font-weight: 700;
+
+        &.email {
+            width: calc(100% - 25px);
+        }
+    }
+
+    label {
+        font-size: 14px;
+        margin-right: 10px;
+        width: 20%;
+        color: $secondary-color;
+    }
+
+    .signup-form__2-elem {
+        .signup-form__element {
+            border-radius: 10px;
+            width: calc(100% - 25px);
+
+           
+        }
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+        
+        width: calc(50% - 50px);
+        @include respond((max: $tablet)) {
+            width: 100%;
+        }
+    }
+
+    .signup-form__element {
+        border-radius: 10px;
+    }
+
+    .signup-form__email-container {
+        display: flex;
+        flex-direction: column;
+        
+
+        label {
+            width: 10%;
+            margin-bottom: 10px;
+        }
+
+    }
+}
