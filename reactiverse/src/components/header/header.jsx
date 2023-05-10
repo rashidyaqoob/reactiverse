@@ -1,6 +1,6 @@
 import "./header.scss";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Router, useLocation, Switch } from "react-router-dom";
 import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
 import HandleSignInBtn from "../Signup/Signup.jsx";
 
@@ -30,9 +30,42 @@ function Header() {
       setNavbarOpen(false);
     }
   }, [isMobile]);
+
+  // To check whether the page is Homepage or not
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  // to turn transparent Navbar into background navbar
+  const [navbarBackground, setNavbarBackground] = useState("transparent");
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    if (isHomePage) {
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > 100) {
+          setIsSticky(true); // Change background color on scroll
+        } else {
+          setIsSticky(false); // Reset to transparent
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, []);
+
   return (
     <>
-      <header className="header">
+      <header
+        className={`header ${isHomePage ? "header-transparent" : ""} ${
+          isSticky ? "sticky" : "fixed"
+        }`}
+        style={{ position: isSticky ? "fixed" : "" }}
+      >
         <div className="main-container">
           <div className="header-logo">
             <Link to="/" className="header-logo__link">

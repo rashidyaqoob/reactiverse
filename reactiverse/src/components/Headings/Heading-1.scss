@@ -1,0 +1,5 @@
+@import '../../base-styles/globals.scss';
+
+h1 {
+    @include heading-1
+}
