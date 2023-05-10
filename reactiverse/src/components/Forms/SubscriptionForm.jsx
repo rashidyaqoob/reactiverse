@@ -5,9 +5,8 @@ const cookieArr = [];
 const Subscriptionform = () => {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
-  //   const [cookie, setCookie] = useCookies(['email'])
 
-  // const FORM_URL = "https://app.convertkit.com/forms/5120270/subscriptions";
+//   const FORM_URL = "https://app.convertkit.com/forms/5120270/subscriptions";
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -21,15 +20,17 @@ const Subscriptionform = () => {
   const retrieveCookie = () => {
     const cookie = document.cookie;
     if (cookie.includes(email)) {
-      setStatus("success");
+      setStatus("duplicate");
     } else {
       handleCookie(email);
+      setStatus("success");
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     retrieveCookie();
+
 
     // const data = new FormData(event.target);
 
@@ -44,10 +45,6 @@ const Subscriptionform = () => {
     //   const json = await response.json();
     //   console.log(json.status);
     //   if (json.status == "success") {
-    //     console.log("hello");
-    //     setStatus("success");
-    //     handleEmailCookie(`'email', ${email};`);
-    //     console.log("success");
     //   }
     // } catch (err) {
     //   setStatus("failed");
@@ -70,8 +67,8 @@ const Subscriptionform = () => {
         <button type="submit" class="subscribe-form__btn">
           Subscribe
         </button>
-        {status == "success" ? <p>Already Subscribed</p> : ""}
-        {/* {cookies.email} */}
+        {status == "duplicate" ? <p>We've already enabled subscription on this email.</p> : ""}
+        {status == "success" ? <p>Congratulations! We've enable subscription on this email.</p> : ""}
       </form>
     </>
   );
