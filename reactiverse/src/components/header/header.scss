@@ -22,24 +22,6 @@
 			}
 		}
 
-		&.sticky {
-			position: static;
-			background: white;
-			box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
-
-			.header-logo-text,
-			.navbar-item__link {
-				color: $primary-color;
-			}
-
-			.navbar-item__link {
-				&::after {
-					content: '';
-					background-color: $primary-color;
-					
-				}
-			}
-		}
 
 		.navbar-item__link {
 			&::after {
@@ -56,6 +38,25 @@
 				@include respond((max: $mobile-potrait)) {
 					color: $primary-color;
 				}
+			}
+		}
+	}
+	&.sticky {
+		position: static;
+		background: white;
+		width: 100%;
+		box-shadow: 0 3px 10px rgb(0 0 0 / 0.4);
+
+		.header-logo-text,
+		.navbar-item__link {
+			color: $primary-color;
+		}
+
+		.navbar-item__link {
+			&::after {
+				content: '';
+				background-color: $primary-color;
+					
 			}
 		}
 	}

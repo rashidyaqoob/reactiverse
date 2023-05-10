@@ -40,22 +40,20 @@ function Header() {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
-    if (isHomePage) {
-      const handleScroll = () => {
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > 100) {
-          setIsSticky(true); // Change background color on scroll
-        } else {
-          setIsSticky(false); // Reset to transparent
-        }
-      };
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > 100) {
+        setIsSticky(true); // Change background color on scroll
+      } else {
+        setIsSticky(false); // Reset to transparent
+      }
+    };
 
-      window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
