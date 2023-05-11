@@ -6,9 +6,11 @@ import ContactUs from "./pages/Contact-us.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import SignUp from "./pages/SignUp/Sign-up.jsx";
 import Home from "./pages/Home/Home.jsx";
+import Hooks from "./pages/Hooks/Hooks.jsx";
+import HookRoutes from "./pages/Hooks/Hooks-routes.jsx";
+import UseState from "./pages/Hooks/UseState/UseState.jsx";
 
 function App() {
-  console.log("hello");
   return (
     <div className="App">
       <BrowserRouter>
@@ -17,9 +19,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/hooks" element={<Hooks />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route />
         </Routes>
+        <HookRoutes />
         <Footer />
       </BrowserRouter>
     </div>

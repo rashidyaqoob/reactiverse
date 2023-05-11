@@ -1,5 +1,5 @@
 import "./Sign-up.scss";
-import { FirebaseAuth } from "../../utils/firebase-app/firebase";
+import { FirebaseAuth } from "../../utils/firebase-app/firebase.jsx";
 import { useState } from "react";
 
 function SignUp() {
