@@ -1,0 +1,77 @@
+@import '../../base-styles/globals.scss';
+ 
+.latest-update-cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px auto 80px ;
+    align-items: center;
+    justify-content: center;
+
+
+    &__item {
+        background: $white;
+        padding: 23px;
+        border-radius: 4px;
+        margin: 14px;
+        color: $black;
+        width: calc(33% - 84px);
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+        &-image {
+            height: 180px;
+            width: 180px;
+            margin: 16px auto;
+            display: flex;
+        }
+
+        &-description {
+            color: $gray;
+            display: none;
+
+            @include heading-6;
+        }
+
+        &-title {
+            margin-bottom: 16px;
+            color: $black;
+
+            @include heading-small-bold;
+        }
+
+        &:hover &-description {
+            display: block;
+            transition: all 1s ease;
+            margin-bottom: 16px;
+        }
+        &:hover  {
+            transform: scale(1.1);
+            transition: all 0.5s ease;
+
+            .latest-update-cards__item-image {
+                height: 110px;
+            }
+
+            .latest-update-cards__item-title {
+                color: $primary-color;
+            }
+        }
+
+        @include respond((max: $mobile-potrait)) {
+            width: 100%;
+        }
+
+    }
+}
+
+.cards-title {
+    margin: 60px  auto 0;
+    padding: 20px;
+
+    @include heading-medium-bold;
+}
+
+.cards-wrapper {
+    max-width: 1190px;
+    width: 100%;
+    margin: auto;
+}
