@@ -1,35 +1,47 @@
-import { Link, BrowserRouter, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import "./Hooks.scss";
-import UseState from "./UseState/UseState";
+import UseState from "../Hooks/UseState/UseState";
 
 const Hooks = () => {
-
-
   return (
     <>
       <div className="hooks">
         <h1>Table of content</h1>
-        <ul>
-          <li>
-            <Link to="/use-state">UseState</Link>
+        <ul className="hooks-list">
+          <li className="hooks-list__item">
+            <Link to="/hooks/use-state" className="hooks-list__item-link">
+              UseState
+            </Link>
+          </li>
+          <li className="hooks-list__item">
+            <Link to="/use-effect" className="hooks-list__item-link">
+              UseEffect
+            </Link>
+          </li>
+          <li className="hooks-list__item">
+            <Link to="/use-ref" className="hooks-list__item-link">
+              UseRef
+            </Link>
+          </li>
+          <li className="hooks-list__item">
+            <Link to="/use-callback" className="hooks-list__item-link">
+              UseCallback
+            </Link>
+          </li>
+          <li className="hooks-list__item">
+            <Link to="/use-context" className="hooks-list__item-link">
+              UseContext
+            </Link>
           </li>
           <li>
-            <Link to="/use-effect">UseEffect</Link>
+            <Link to="/use-demo" className="hooks-list__item-link">
+              UseMemo
+            </Link>
           </li>
-          <li>
-            <Link to="/use-ref">UseRef</Link>
-          </li>
-          <li>
-            <Link to="/use-callback">UseCallback</Link>
-          </li>
-          <li>
-            <Link to="/use-context">UseContext</Link>
-          </li>
-          <li>
-            <Link to="/use-demo">UseMemo</Link>
-          </li>
-          <li>
-            <Link to="/use-reducer">UseReducer</Link>
+          <li className="hooks-list__item">
+            <Link to="/use-reducer" className="hooks-list__item-link">
+              UseReducer
+            </Link>
           </li>
         </ul>
         <Link to="">
@@ -41,14 +53,3 @@ const Hooks = () => {
 };
 
 export default Hooks;
-
-export const HookRoutes = () => {
-    <Routes>
-      <Route path="/use-state" element={<UseState />} />
-      {/* <Route path="/use-effect" element={<UseEffect />} />
-        <Route path="/use-ref" element={<UseRef />} />
-        <Route path="/use-callback" element={<UseCallback />} />
-        <Route path="/use-context" element={<UseContext />} /> */}
-      <Route />
-    </Routes>;
-  };

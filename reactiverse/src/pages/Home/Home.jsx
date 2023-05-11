@@ -1,12 +1,12 @@
 import "./Home.scss";
-import HomepageBanner from "../../components/Homepage-banner/Homepage-banner";
-import LatestUpdateCards from "../../components/Latest-update-cards/Latest-update-cards";
+import HomepageBanner from "../../components/Homepage-banner/Homepage-banner.jsx";
+import LatestUpdateCards from "../../components/Latest-update-cards/Latest-update-cards.jsx";
 
 function Home() {
   return (
     <>
-        <HomepageBanner />
-        <LatestUpdateCards/>
+      <HomepageBanner />
+      <LatestUpdateCards />
     </>
   );
 }

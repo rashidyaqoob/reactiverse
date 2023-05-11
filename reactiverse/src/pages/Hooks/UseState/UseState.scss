@@ -1,0 +1,31 @@
+@import '../../../base-styles/globals.scss';
+
+.hook {
+    max-width: $body-width;
+    margin: 60px auto;
+
+    &__title {
+        @include heading-1
+    }
+
+    &__description {
+        font-size: 20px;
+    }
+
+    &__examples {
+        .btn {
+            padding: 6px 12px;
+            max-width: 300px;
+            cursor: pointer;
+        }
+    }
+
+    &__count {
+        font-size: 20px;
+        color: white;
+        background-color: $primary-color;
+        border: 2px solid $black;
+        padding: 6px 8px;
+    }
+}
+

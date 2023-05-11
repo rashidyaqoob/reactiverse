@@ -1,5 +1,10 @@
 @import '../../base-styles/globals.scss';
 
-.hooks a {
-    color: $black;
+
+.hooks-list {
+    max-width: 768px;
+    margin: auto;
+    &__item-link {
+        @include primary-link-hover
+    }
 }
