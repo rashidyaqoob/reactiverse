@@ -14,7 +14,7 @@ const Hooks = () => {
             </Link>
           </li>
           <li className="hooks-list__item">
-            <Link to="/use-effect" className="hooks-list__item-link">
+            <Link to="/hooks/use-effect" className="hooks-list__item-link">
               UseEffect
             </Link>
           </li>
