@@ -19,7 +19,7 @@ const Hooks = () => {
             </Link>
           </li>
           <li className="hooks-list__item">
-            <Link to="/use-ref" className="hooks-list__item-link">
+            <Link to="/hooks/use-ref" className="hooks-list__item-link">
               UseRef
             </Link>
           </li>
@@ -34,7 +34,7 @@ const Hooks = () => {
             </Link>
           </li>
           <li>
-            <Link to="/use-demo" className="hooks-list__item-link">
+            <Link to="/hooks/use-memo" className="hooks-list__item-link">
               UseMemo
             </Link>
           </li>
