@@ -29,7 +29,7 @@ const Hooks = () => {
             </Link>
           </li>
           <li className="hooks-list__item">
-            <Link to="/use-context" className="hooks-list__item-link">
+            <Link to="/hooks/use-context" className="hooks-list__item-link">
               UseContext
             </Link>
           </li>
