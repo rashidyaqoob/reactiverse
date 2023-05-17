@@ -24,7 +24,7 @@ const Hooks = () => {
             </Link>
           </li>
           <li className="hooks-list__item">
-            <Link to="/use-callback" className="hooks-list__item-link">
+            <Link to="/hooks/use-callback" className="hooks-list__item-link">
               UseCallback
             </Link>
           </li>
