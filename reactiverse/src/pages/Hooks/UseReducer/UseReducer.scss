@@ -1,0 +1,13 @@
+@import '../../../base-styles/globals.scss';
+
+.use-reducer {
+  max-width: $body-width;
+  margin: 60px auto;
+    
+  .input-name {
+    padding: 8px;
+    border-radius: 4px;
+    line-height: 1.25;
+    font-size: 16px;
+  }
+}

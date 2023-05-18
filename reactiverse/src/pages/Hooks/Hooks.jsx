@@ -1,6 +1,5 @@
 import { Link, Route, Routes } from "react-router-dom";
 import "./Hooks.scss";
-import UseState from "../Hooks/UseState/UseState";
 
 const Hooks = () => {
   return (
@@ -39,7 +38,7 @@ const Hooks = () => {
             </Link>
           </li>
           <li className="hooks-list__item">
-            <Link to="/use-reducer" className="hooks-list__item-link">
+            <Link to="/hooks/use-reducer" className="hooks-list__item-link">
               UseReducer
             </Link>
           </li>
