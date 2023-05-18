@@ -6,6 +6,7 @@ import Todo from "./Todo";
 export const Actions = {
   ADD_TODO: "add-todo",
   TOGGLE_TODO: "toggle-todo",
+  DELETE_TODO: 'delete-todo'
 };
 
 function reducer(todos, action) {
@@ -19,6 +20,10 @@ function reducer(todos, action) {
         }
         return todo;
       });
+    case Actions.DELETE_TODO:
+      return todos.filter(todo => 
+        todo.id !== action.payload.id
+      );
 
     default:
       return console.error("No case submitted");

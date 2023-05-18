@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useState } from "react";
 import "./UseState.scss";
 
@@ -44,13 +43,14 @@ const UseState = () => {
         </p>
       </div>
       <div className="hook__examples">
+        <h2>UseSate Examples</h2>
         <div className="hook__examples__int">
           <h2>Counter</h2>
-          <button className=" btn btn-decreament" onClick={handleDecrement}>
+          <button className=" btn btn-decrement" onClick={handleDecrement}>
             {"-"}
           </button>
           <span className="hook__count">{count}</span>
-          <button className=" btn btn-increament" onClick={handleIncrement}>
+          <button className=" btn btn-increment" onClick={handleIncrement}>
             {"+"}
           </button>
         </div>
@@ -58,7 +58,7 @@ const UseState = () => {
           <h2>Enter Name</h2>
           <input
             type="text"
-            className="input-name"
+            className="input-text"
             placeholder="Enter Name"
             onChange={(event) => setName1(event.target.value)}
             value={name1}
@@ -69,7 +69,7 @@ const UseState = () => {
           <h2>Enter Name</h2>
           <input
             type="text"
-            className="input-name"
+            className="input-text"
             placeholder="Enter Name"
             onChange={(event) => setName2(event.target.value)}
             value={name2}
@@ -85,6 +85,7 @@ const UseState = () => {
             <input
               placeholder="Enter New Item"
               type="text"
+              className="input-text"
               value={arrayItem}
               onChange={handleItemChange}
             />
