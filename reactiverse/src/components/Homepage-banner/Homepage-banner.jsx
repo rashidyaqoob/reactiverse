@@ -1,9 +1,20 @@
 import "./Homepage-banner.scss";
 import Image from "../Image/Image.jsx";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Heading1 from "../Headings/Heading-1";
 
 function HomepageBanner() {
+  const [homepage_banner, setHomepageBanner] = useState({});
+
+  useEffect(() => {
+    fetch("http://localhost:8000/message")
+      .then((res) => res.json())
+      .then((data) => {
+        setHomepageBanner(data.homepage_banner_content);
+      });
+  }, []);
+
   return (
     <>
       <div className="homepage-banner">
@@ -16,7 +27,7 @@ function HomepageBanner() {
         </div>
         <div className="homepage-banner__content-container">
           <Heading1
-            heading1_text={"Welcome to the Reactiverse"}
+            heading1_text={homepage_banner.homepage_banner_title}
             extra_heading1_classes="homepage-banner__title"
           />
           <p className="homepage-banner__description">

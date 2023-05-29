@@ -7,7 +7,11 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/message", (req, res) => {
-  res.json({ message: "Hello from server!" });
+  res.json({
+    homepage_banner_content: {
+      homepage_banner_title: "Welcome to the Reactiverse",
+    },
+  });
 });
 
 app.listen(8000, () => {
