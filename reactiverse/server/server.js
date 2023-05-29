@@ -14,6 +14,45 @@ app.get("/message", (req, res) => {
   });
 });
 
+app.get("/outfit", (req, res) => {
+  res.json({
+    jeans: [
+      {
+        color: "red",
+        size: "medium",
+        brand: "Puma",
+      },
+      {
+        color: "black",
+        size: "large",
+        brand: "Puma",
+      },
+      {
+        color: "grean",
+        size: "medium",
+        brand: "nike",
+      },
+    ],
+    jackets: [
+      {
+        color: "red",
+        size: "medium",
+        brand: "Puma",
+      },
+      {
+        color: "black",
+        size: "large",
+        brand: "Puma",
+      },
+      {
+        color: "grean",
+        size: "medium",
+        brand: "nike",
+      },
+    ],
+  });
+});
+
 app.listen(8000, () => {
   console.log(`Server is running on port 8000.`);
 });

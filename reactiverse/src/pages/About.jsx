@@ -1,7 +1,9 @@
+import Outfit from "../components/Outfit/Outfit";
+
 function About() {
   return (
     <>
-      <div>This is about page</div>
+      <Outfit />
     </>
   );
 }
