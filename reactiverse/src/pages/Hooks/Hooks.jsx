@@ -42,6 +42,11 @@ const Hooks = () => {
               UseReducer
             </Link>
           </li>
+          <li className="hooks-list__item">
+            <Link to="/hooks/use-custom" className="hooks-list__item-link">
+              Usecustom
+            </Link>
+          </li>
         </ul>
         <Link to="">
           <p>Some Hook rules </p>

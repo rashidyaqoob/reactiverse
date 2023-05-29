@@ -8,11 +8,19 @@ import SignUp from "./pages/SignUp/Sign-up.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Hooks from "./pages/Hooks/Hooks.jsx";
 import HookRoutes from "./pages/Hooks/Hooks-routes.jsx";
-import UseState from "./pages/Hooks/UseState/UseState.jsx";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:8000/message")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  }, []);
   return (
     <div className="App">
+      <h1>{message}</h1>
       <BrowserRouter>
         <Header />
         <Routes>
