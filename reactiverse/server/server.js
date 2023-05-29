@@ -7,7 +7,50 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/message", (req, res) => {
-  res.json({ message: "Hello from server!" });
+  res.json({
+    homepage_banner_content: {
+      homepage_banner_title: "Welcome to the Reactiverse",
+    },
+  });
+});
+
+app.get("/outfit", (req, res) => {
+  res.json({
+    jeans: [
+      {
+        color: "red",
+        size: "medium",
+        brand: "Puma",
+      },
+      {
+        color: "black",
+        size: "large",
+        brand: "Puma",
+      },
+      {
+        color: "grean",
+        size: "medium",
+        brand: "nike",
+      },
+    ],
+    jackets: [
+      {
+        color: "red",
+        size: "medium",
+        brand: "Puma",
+      },
+      {
+        color: "black",
+        size: "large",
+        brand: "Puma",
+      },
+      {
+        color: "grean",
+        size: "medium",
+        brand: "nike",
+      },
+    ],
+  });
 });
 
 app.listen(8000, () => {
