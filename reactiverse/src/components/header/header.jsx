@@ -83,8 +83,8 @@ function Header() {
                   </Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/about" className="navbar-item__link">
-                    About
+                  <Link to="/outfit" className="navbar-item__link">
+                    Outfits
                   </Link>
                 </li>
                 <li className="navbar-item">
