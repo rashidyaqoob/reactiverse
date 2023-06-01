@@ -1,0 +1,10 @@
+@import '../../../base-styles/globals.scss';
+
+.use-context {
+  width: $body-width;
+  margin: 60px auto;
+
+  h2 {
+    margin-bottom: 12px;
+  }
+}

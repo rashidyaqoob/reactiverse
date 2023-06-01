@@ -1,0 +1,17 @@
+@import '../../../base-styles/globals.scss';
+
+.use-custom-hook {
+  width: $body-width;
+  margin: 60px auto;
+
+  input {
+    margin: 40px auto;
+    padding: 16px;
+
+    @include heading-3;
+  }
+
+  p {
+    @include heading-2;
+  }
+}

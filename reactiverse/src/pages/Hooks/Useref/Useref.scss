@@ -1,1 +1,28 @@
 @import '../../../base-styles/globals.scss';
+
+.hook__useref {
+  width: $body-width;
+  margin: 60px auto;
+
+  input {
+    margin: 40px auto;
+    padding: 16px;
+
+    @include heading-3;
+  }
+
+  p {
+    @include heading-2;
+  }
+
+  button {
+    margin: 12px;
+    padding: 12px;
+    background-color: $secondary-color;
+    color: $primary-color;
+    border: none;
+    border-radius: 4px;
+
+    @include heading-small-bold;
+  }
+}
