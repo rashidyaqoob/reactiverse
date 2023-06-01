@@ -47,6 +47,8 @@ const UseReducer = () => {
 
   return (
     <div className="use-reducer">
+      <p> UseReducer is typically used as an alternative to the useState hook when the state logic becomes more intricate or involves multiple related values. </p>
+      <p>Enter Todo for the day</p>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -59,6 +61,7 @@ const UseReducer = () => {
       {todos.map((todo) => {
         return <Todo todo={todo} dispatch={dispatch} />;
       })}
+      
     </div>
   );
 };

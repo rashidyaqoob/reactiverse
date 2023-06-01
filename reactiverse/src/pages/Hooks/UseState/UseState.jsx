@@ -45,7 +45,7 @@ const UseState = () => {
       <div className="hook__examples">
         <h2>UseSate Examples</h2>
         <div className="hook__examples__int">
-          <h2>Counter</h2>
+          <h2>Hook example Int: Counter </h2>
           <button className=" btn btn-decrement" onClick={handleDecrement}>
             {"-"}
           </button>
@@ -55,7 +55,7 @@ const UseState = () => {
           </button>
         </div>
         <div className="hooks__example__string">
-          <h2>Enter Name</h2>
+          <h2>Hook example String: Enter Name</h2>
           <input
             type="text"
             className="input-text"
@@ -81,6 +81,7 @@ const UseState = () => {
           </button>
         </div>
         <div className="hook__example__array">
+          <h2>Hook example Array</h2>
           <form onSubmit={addItemToArray}>
             <input
               placeholder="Enter New Item"
@@ -89,7 +90,7 @@ const UseState = () => {
               value={arrayItem}
               onChange={handleItemChange}
             />
-            <button>Click</button>
+            <button className="btn btn-enter">Click</button>
           </form>
           <ul>
             {arrayList.map((item, index) => (
