@@ -1,10 +1,37 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// app.get("/home", (req, res) => {
+//   res.json({
+//     name: "Bill",
+//     age: 99,
+//   });
+// });
+
+app.post("/home", (req, res) => {
+  const { username, password, confirmPassword } = req.body;
+  const { authorization } = req.headers;
+  if (password !== confirmPassword) {
+    return res.send({
+      message: "This is an error!",
+    });
+  }
+  res.send({
+    username,
+    password,
+    confirmPassword,
+    authorization,
+  });
+});
 
 app.get("/message", (req, res) => {
   res.json({

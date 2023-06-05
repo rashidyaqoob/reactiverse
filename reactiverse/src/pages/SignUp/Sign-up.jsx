@@ -1,17 +1,45 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./Sign-up.scss";
 import { FirebaseAuth } from "../../utils/firebase-app/firebase.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { BASE_URL } from "../../utils/base-url/BASE_URL";
 
 function SignUp() {
+  const [firstName, setFirstname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const formInfo = {
+    username: firstName,
+    password: password,
+    confirmPassword: confirmPassword,
+  };
+  const [data, setData] = useState({});
+  // useEffect(() => {
+  //   fetch(`${BASE_URL}/home`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(formInfo),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data));
+  // }, []);
   const handleSubmit = (e) => {
-    if (password !== confirmPassword) {
-      alert("Password and confirm password doesnot match");
-    } else {
-      e.preventDefault();
-      FirebaseAuth(email, password);
+    e.preventDefault();
+    fetch(`${BASE_URL}/home`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => setData(data));
+    console.log(data);
+    if (data.message !== null) {
+      alert(data.message);
     }
   };
   return (
@@ -26,6 +54,7 @@ function SignUp() {
               placeholder="First Name"
               name="first-name"
               className="signup-form__element"
+              onChange={(e) => setFirstname(e.target.value)}
             ></input>
           </div>
           <div className="signup-form__2-elem">
@@ -84,6 +113,9 @@ function SignUp() {
           className="signup-form__element submit"
         ></input>
       </form>
+      <div>{data.username}</div>
+      <div>{data.password}</div>
+      <div>{data.confirmPassword}</div>
     </div>
   );
 }
