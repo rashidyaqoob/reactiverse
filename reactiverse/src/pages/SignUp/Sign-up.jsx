@@ -1,19 +1,42 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./Sign-up.scss";
 import { FirebaseAuth } from "../../utils/firebase-app/firebase.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { BASE_URL } from "../../utils/base-url/BASE_URL";
 
 function SignUp() {
+  const [firstName, setFirstname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const handleSubmit = (e) => {
-    if (password !== confirmPassword) {
-      alert("Password and confirm password doesnot match");
-    } else {
-      e.preventDefault();
-      FirebaseAuth(email, password);
+  const formInfo = {
+    username: firstName,
+    password: password,
+    confirmPassword: confirmPassword,
+    email: email,
+  };
+  const [data, setData] = useState({});
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await fetch(`${BASE_URL}/sign-up`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+        });
+
+      // Handle the response as needed
+    } catch (error) {
+      console.error("Error registering user:", error);
     }
   };
+
   return (
     <div className="signup-form-container">
       <form className="signup-form">
@@ -26,6 +49,7 @@ function SignUp() {
               placeholder="First Name"
               name="first-name"
               className="signup-form__element"
+              onChange={(e) => setFirstname(e.target.value)}
             ></input>
           </div>
           <div className="signup-form__2-elem">
@@ -84,6 +108,7 @@ function SignUp() {
           className="signup-form__element submit"
         ></input>
       </form>
+      <div>{data.message}</div>
     </div>
   );
 }

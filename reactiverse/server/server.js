@@ -1,10 +1,39 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const jwt = require("jsonwebtoken");
+const fs = require("fs");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// app.get("/home", (req, res) => {
+//   res.json({
+//     name: "Bill",
+//     age: 99,
+//   });
+// });
+
+// app.post("/home", (req, res) => {
+//   const { username, password, confirmPassword } = req.body;
+//   const { authorization } = req.headers;
+//   if (password !== confirmPassword) {
+//     return res.send({
+//       message: "This is an error!",
+//     });
+//   }
+//   res.send({
+//     username,
+//     password,
+//     confirmPassword,
+//     authorization,
+//   });
+// });
 
 app.get("/message", (req, res) => {
   res.json({
@@ -501,6 +530,34 @@ app.get("/outfit", (req, res) => {
       },
     ],
   });
+});
+
+// retrieve data from users.json file
+
+app.get("/sign-up", (req, res) => {
+  res.json(JSON.parse(fs.readFileSync("users.json")));
+});
+
+// Register a new user
+app.post("/sign-up", (req, res) => {
+  const { username, password, email } = req.body;
+
+  // Read the existing users data from users.json
+  const usersData = fs.readFileSync("users.json");
+  let users = JSON.parse(usersData);
+
+  // Add the new user to the users array
+  const newUser = { username, password, email };
+  users.push(newUser);
+
+  // Convert the updated array back to JSON
+  const updatedUsersData = JSON.stringify(users);
+
+  // Write the updated users data to users.json
+  fs.writeFileSync("users.json", updatedUsersData);
+
+  // Send a response indicating successful registration
+  res.status(200).json({ message: "User registered successfully" });
 });
 
 app.listen(8000, () => {
