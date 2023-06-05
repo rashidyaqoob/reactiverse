@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const jwt = require("jsonwebtoken");
+const fs = require("fs");
 
 const app = express();
 
@@ -17,21 +19,21 @@ app.use(bodyParser.json());
 //   });
 // });
 
-app.post("/home", (req, res) => {
-  const { username, password, confirmPassword } = req.body;
-  const { authorization } = req.headers;
-  if (password !== confirmPassword) {
-    return res.send({
-      message: "This is an error!",
-    });
-  }
-  res.send({
-    username,
-    password,
-    confirmPassword,
-    authorization,
-  });
-});
+// app.post("/home", (req, res) => {
+//   const { username, password, confirmPassword } = req.body;
+//   const { authorization } = req.headers;
+//   if (password !== confirmPassword) {
+//     return res.send({
+//       message: "This is an error!",
+//     });
+//   }
+//   res.send({
+//     username,
+//     password,
+//     confirmPassword,
+//     authorization,
+//   });
+// });
 
 app.get("/message", (req, res) => {
   res.json({
@@ -527,6 +529,32 @@ app.get("/outfit", (req, res) => {
         image: "https://placehold.co/300x200",
       },
     ],
+  });
+});
+
+// Register a new user
+app.post("/sign-up", (req, res) => {
+  const { username, password, email } = req.body;
+
+  // authentication
+
+  // Generate a new JWT for the registered user
+  const token = jwt.sign({ username, password, email }, "reactiverse");
+
+  const user = { username, password, email };
+  var obj = {
+    users: [],
+  };
+
+  fs.readFile("users.json", "utf8", function readFileCallback(err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      obj = JSON.parse(data); //now it an object
+      obj.users.push(user); //add some data
+      let json = JSON.stringify(obj); //convert it back to json
+      fs.writeFile("users.json", json, "utf8"); // write it back
+    }
   });
 });
 

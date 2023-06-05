@@ -13,22 +13,12 @@ function SignUp() {
     username: firstName,
     password: password,
     confirmPassword: confirmPassword,
+    email: email,
   };
   const [data, setData] = useState({});
-  // useEffect(() => {
-  //   fetch(`${BASE_URL}/home`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(formInfo),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data));
-  // }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`${BASE_URL}/home`, {
+    fetch(`${BASE_URL}/sign-up`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -37,10 +27,6 @@ function SignUp() {
     })
       .then((res) => res.json())
       .then((data) => setData(data));
-    console.log(data);
-    if (data.message !== null) {
-      alert(data.message);
-    }
   };
   return (
     <div className="signup-form-container">
@@ -115,7 +101,7 @@ function SignUp() {
       </form>
       <div>{data.username}</div>
       <div>{data.password}</div>
-      <div>{data.confirmPassword}</div>
+      <div>{data.token}</div>
     </div>
   );
 }
