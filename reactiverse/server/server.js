@@ -532,30 +532,32 @@ app.get("/outfit", (req, res) => {
   });
 });
 
+// retrieve data from users.json file
+
+app.get("/sign-up", (req, res) => {
+  res.json(JSON.parse(fs.readFileSync("users.json")));
+});
+
 // Register a new user
 app.post("/sign-up", (req, res) => {
   const { username, password, email } = req.body;
 
-  // authentication
+  // Read the existing users data from users.json
+  const usersData = fs.readFileSync("users.json");
+  let users = JSON.parse(usersData);
 
-  // Generate a new JWT for the registered user
-  const token = jwt.sign({ username, password, email }, "reactiverse");
+  // Add the new user to the users array
+  const newUser = { username, password, email };
+  users.push(newUser);
 
-  const user = { username, password, email };
-  var obj = {
-    users: [],
-  };
+  // Convert the updated array back to JSON
+  const updatedUsersData = JSON.stringify(users);
 
-  fs.readFile("users.json", "utf8", function readFileCallback(err, data) {
-    if (err) {
-      console.log(err);
-    } else {
-      obj = JSON.parse(data); //now it an object
-      obj.users.push(user); //add some data
-      let json = JSON.stringify(obj); //convert it back to json
-      fs.writeFile("users.json", json, "utf8"); // write it back
-    }
-  });
+  // Write the updated users data to users.json
+  fs.writeFileSync("users.json", updatedUsersData);
+
+  // Send a response indicating successful registration
+  res.status(200).json({ message: "User registered successfully" });
 });
 
 app.listen(8000, () => {

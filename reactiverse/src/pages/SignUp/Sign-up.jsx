@@ -16,18 +16,27 @@ function SignUp() {
     email: email,
   };
   const [data, setData] = useState({});
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch(`${BASE_URL}/sign-up`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(formInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => setData(data));
+    try {
+      await fetch(`${BASE_URL}/sign-up`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+        });
+
+      // Handle the response as needed
+    } catch (error) {
+      console.error("Error registering user:", error);
+    }
   };
+
   return (
     <div className="signup-form-container">
       <form className="signup-form">
@@ -99,9 +108,7 @@ function SignUp() {
           className="signup-form__element submit"
         ></input>
       </form>
-      <div>{data.username}</div>
-      <div>{data.password}</div>
-      <div>{data.token}</div>
+      <div>{data.message}</div>
     </div>
   );
 }
