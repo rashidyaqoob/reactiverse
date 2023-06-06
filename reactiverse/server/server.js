@@ -560,6 +560,16 @@ app.post("/sign-up", (req, res) => {
   res.status(200).json({ message: "User registered successfully" });
 });
 
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  const usersData = fs.readFileSync("users.json");
+  const user = usersData.find(u => u.email == email && u.password == password);
+  
+  res.status(200).json({
+    user: user ? true : false
+  }) 
+})
+
 app.listen(8000, () => {
   console.log(`Server is running on port 8000.`);
 });
