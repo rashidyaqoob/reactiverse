@@ -10,7 +10,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate();
+
   const formInfo = {
     username: firstName,
     password: password,
@@ -30,7 +30,13 @@ function SignUp() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setData(data);
+        if (!data.message) {
+          alert("Password and Confirm password don't match");
+          setPassword("");
+          setConfirmPassword("");
+        }
       });
     // Handle the response as needed
   };
@@ -106,11 +112,16 @@ function SignUp() {
           className="signup-form__element submit"
         ></input>
       </form>
-      {data.message != null ? <div className="success-block"> 
-        <p>{data.message}</p>
-        <Link className="btn-login" to="/login">Click here to Login!</Link>
-      </div> : ""}
-      
+      {data.message !== false ? (
+        <div className="success-block">
+          <p>{data.message}</p>
+          <Link className="btn-login" to="/login">
+            Click here to Login!
+          </Link>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

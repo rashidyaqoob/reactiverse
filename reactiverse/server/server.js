@@ -540,35 +540,50 @@ app.get("/sign-up", (req, res) => {
 
 // Register a new user
 app.post("/sign-up", (req, res) => {
-  const { username, password, email } = req.body;
+  const { username, password, email, confirmPassword } = req.body;
 
-  // Read the existing users data from users.json
-  const usersData = fs.readFileSync("users.json");
-  let users = JSON.parse(usersData);
+  if (password !== confirmPassword) {
+    res.json({
+      message: false,
+    });
+  } else {
+    // Read the existing users data from users.json
+    const usersData = fs.readFileSync("users.json");
+    let users = JSON.parse(usersData);
+    const newUser = { username, password, email };
+    users.push(newUser);
+
+    // Convert the updated array back to JSON
+    const updatedUsersData = JSON.stringify(users);
+
+    // Write the updated users data to users.json
+    fs.writeFileSync("users.json", updatedUsersData);
+
+    // Send a response indicating successful registration
+    res.status(200).json({ message: "User registered successfully" });
+  }
 
   // Add the new user to the users array
-  const newUser = { username, password, email };
-  users.push(newUser);
-
-  // Convert the updated array back to JSON
-  const updatedUsersData = JSON.stringify(users);
-
-  // Write the updated users data to users.json
-  fs.writeFileSync("users.json", updatedUsersData);
-
-  // Send a response indicating successful registration
-  res.status(200).json({ message: "User registered successfully" });
 });
 
-app.post('/login', (req, res) => {
+app.post("/login", (req, res) => {
   const { email, password } = req.body;
-  const usersData = fs.readFileSync("users.json");
-  const user = usersData.find(u => u.email == email && u.password == password);
-  
-  res.status(200).json({
-    user: user ? true : false
-  }) 
-})
+  try {
+    const usersData = JSON.parse(fs.readFileSync("users.json"));
+    function login(email, password) {
+      const user = usersData.find(
+        (u) => u.email === email && u.password === password
+      );
+      return user ? true : false;
+    }
+    const loggedIn = login(email, password);
+    res.status(200).json({
+      user: loggedIn,
+    });
+  } catch (error) {
+    console.error("Error reading or parsing users.json:", error);
+  }
+});
 
 app.listen(8000, () => {
   console.log(`Server is running on port 8000.`);

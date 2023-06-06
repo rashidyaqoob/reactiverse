@@ -10,7 +10,7 @@ function Login() {
   const navigate = useNavigate();
   const loginInfo = {
     email: email,
-    password: password
+    password: password,
   };
   const [data, setData] = useState({});
   const handleSubmit = async (e) => {
@@ -25,7 +25,7 @@ function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setData(data);
       });
     // Handle the response as needed
   };
@@ -66,7 +66,7 @@ function Login() {
           className="login-form__element submit"
         ></input>
       </form>
-      
+      {data.user ? navigate("/") : ""}
     </div>
   );
 }
