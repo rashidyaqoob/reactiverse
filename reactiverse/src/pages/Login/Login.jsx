@@ -66,7 +66,12 @@ function Login() {
           className="login-form__element submit"
         ></input>
       </form>
-      {data.user ? navigate("/") : ""}
+      {data.user == true && (
+        navigate('/')
+      )}
+        {data.user == false && (
+        <p>No user found</p>
+      )}
     </div>
   );
 }
