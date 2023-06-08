@@ -7,6 +7,17 @@ import { Link, useNavigate } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    // Update local storage when token changes
+    if (token) {
+      localStorage.setItem('jwtToken', token);
+    } else {
+      localStorage.removeItem('jwtToken');
+    }
+  }, [token]);
+
   const navigate = useNavigate();
   const loginInfo = {
     email: email,
@@ -26,9 +37,12 @@ function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data.token);
+        setToken(data.token)
       });
   };
+
+
 
   return (
     <div className="login-form-container">
@@ -68,6 +82,7 @@ function Login() {
       </form>
       {data.user === true && navigate("/")}
       {data.user === false && <p>No user found</p>}
+      {data.token}
     </div>
   );
 }

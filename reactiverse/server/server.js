@@ -551,17 +551,24 @@ app.post("/sign-up", (req, res) => {
     // Read the existing users data from users.json
     const usersData = fs.readFileSync("users.json");
     let users = JSON.parse(usersData);
-    const newUser = { username, password, email };
-    users.push(newUser);
+    const registeredUser = checkUser(email, password, users);
 
-    // Convert the updated array back to JSON
-    const updatedUsersData = JSON.stringify(users);
+    if(registeredUser) {
+      res.status(201).json({ message: "Already registered! Please try another email" });
+    }else {
+      const newUser = { username, password, email };
+      users.push(newUser);
 
-    // Write the updated users data to users.json
-    fs.writeFileSync("users.json", updatedUsersData);
+      // Convert the updated array back to JSON
+      const updatedUsersData = JSON.stringify(users);
 
-    // Send a response indicating successful registration
-    res.status(200).json({ message: "User registered successfully" });
+      // Write the updated users data to users.json
+      fs.writeFileSync("users.json", updatedUsersData);
+
+      // Send a response indicating successful registration
+      res.status(200).json({ message: "User registered successfully" });
+    }
+    
   }
 
   // Add the new user to the users array
@@ -583,7 +590,7 @@ const verifyToken = (req, res, next) => {
 
   jwt.verify(token, secretKey, (err, decoded) => {
     if (err) {
-      return res.status(401).json({ message: "Invalid token" });
+      return res.status(401).json({ message: err });
     }
 
     // Token is valid, proceed to the next middleware or route handler
@@ -594,22 +601,24 @@ const verifyToken = (req, res, next) => {
 
 module.exports = verifyToken;
 
-app.get("/login", verifyToken, (req, res) => {
+app.get("/login",verifyToken, (req, res) => {
   // Token is verified, handle the homepage logic
-  res.send("Welcome to the homepage!");
+  res.json({message: "Welcome to the homepage!"});
 });
+
+function checkUser(email, password, usersData) {
+  const user = usersData.find(
+    (u) => u.email === email && u.password === password
+  );
+  return user ? true : false;
+}
 
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
   try {
     const usersData = JSON.parse(fs.readFileSync("users.json"));
-    function login(email, password) {
-      const user = usersData.find(
-        (u) => u.email === email && u.password === password
-      );
-      return user ? true : false;
-    }
-    const loggedIn = login(email, password);
+    
+    const loggedIn = checkUser(email, password, usersData);
     if (loggedIn) {
       res.status(200).json({
         user: true,

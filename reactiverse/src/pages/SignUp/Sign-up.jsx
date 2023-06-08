@@ -115,13 +115,13 @@ function SignUp() {
       {data.message ? (
         <div className="success-block">
           <p>{data.message}</p>
-          <Link className="btn-login" to="/login">
-            Click here to Login!
-          </Link>
         </div>
       ) : (
         ""
       )}
+      <Link className="btn-login" to="/login">
+            Click here to Login!
+          </Link>
     </div>
   );
 }
