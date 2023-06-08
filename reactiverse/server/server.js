@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -566,6 +567,38 @@ app.post("/sign-up", (req, res) => {
   // Add the new user to the users array
 });
 
+function generateToken(data, key, options) {
+  const token = jwt.sign(data, key, options);
+  return token;
+}
+
+const secretKey = process.env.JWT_SECRET_KEY;
+
+const verifyToken = (req, res, next) => {
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).json({ message: "No token provided" });
+  }
+
+  jwt.verify(token, secretKey, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ message: "Invalid token" });
+    }
+
+    // Token is valid, proceed to the next middleware or route handler
+    req.user = decoded; // Attach the decoded token payload to the request object
+    next();
+  });
+};
+
+module.exports = verifyToken;
+
+app.get("/login", verifyToken, (req, res) => {
+  // Token is verified, handle the homepage logic
+  res.send("Welcome to the homepage!");
+});
+
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
   try {
@@ -577,9 +610,17 @@ app.post("/login", (req, res) => {
       return user ? true : false;
     }
     const loggedIn = login(email, password);
-    res.status(200).json({
-      user: loggedIn,
-    });
+    if (loggedIn) {
+      res.status(200).json({
+        user: true,
+        token: generateToken({ email, password }, process.env.JWT_SECRET_KEY),
+      });
+    } else {
+      res.status(200).json({
+        user: false,
+        token: null,
+      });
+    }
   } catch (error) {
     console.error("Error reading or parsing users.json:", error);
   }

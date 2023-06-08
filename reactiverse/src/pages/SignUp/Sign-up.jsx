@@ -112,7 +112,7 @@ function SignUp() {
           className="signup-form__element submit"
         ></input>
       </form>
-      {data.message !== false ? (
+      {data.message ? (
         <div className="success-block">
           <p>{data.message}</p>
           <Link className="btn-login" to="/login">

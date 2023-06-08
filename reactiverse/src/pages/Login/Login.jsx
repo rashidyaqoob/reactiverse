@@ -20,14 +20,14 @@ function Login() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: process.env.JWT_SECRET_KEY,
       },
       body: JSON.stringify(loginInfo),
     })
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        console.log(data);
       });
-    // Handle the response as needed
   };
 
   return (
@@ -66,12 +66,8 @@ function Login() {
           className="login-form__element submit"
         ></input>
       </form>
-      {data.user == true && (
-        navigate('/')
-      )}
-        {data.user == false && (
-        <p>No user found</p>
-      )}
+      {data.user === true && navigate("/")}
+      {data.user === false && <p>No user found</p>}
     </div>
   );
 }
