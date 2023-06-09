@@ -4,12 +4,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { BASE_URL } from "../../utils/base-url/BASE_URL";
 import Select from "react-select";
 import Outfitcard from "./Outfit-card";
+import { CheckAuthExpiry }  from "../../utils/check-auth/CheckAuth.jsx";
 
 const Outfit = () => {
   const [men, setMen] = useState([]);
   const [women, setWomen] = useState([]);
   const [filterValue, setFiltervalue] = useState("");
   const [filterBrand, setBrandvalue] = useState("");
+  const [status, setStatus] = useState('')
   const location = useLocation();
   const navigate = useNavigate();
   const optionsGender = [
@@ -22,6 +24,15 @@ const Outfit = () => {
     { value: "puma", label: "Puma" },
     { value: "nike", label: "Nike" },
   ];
+
+  const token = localStorage.getItem('jwtToken')
+  const auth = CheckAuthExpiry();
+  console.log("auth",auth)
+
+  useEffect(() => {
+    // Update local storage when token changes
+  //  console.log(auth)
+  });
 
   useEffect(() => {
     fetch(`${BASE_URL}/outfit`)
@@ -41,7 +52,6 @@ const Outfit = () => {
       search: `?${searchParams.toString()}`,
     });
     setFiltervalue(opt.value);
-    console.log(filterValue);
   }
 
   function handleFilterBrand(brand) {
@@ -56,7 +66,6 @@ const Outfit = () => {
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    console.log(searchParams);
     if (!searchParams.has("option")) {
       const newSearchParams = new URLSearchParams();
       window.history.replaceState(
@@ -68,7 +77,8 @@ const Outfit = () => {
   }, []);
 
   return (
-    <div className="outfits-container">
+    <>
+    {status == 200 ? (<div className="outfits-container">
       <div className="outfit-dropdown">
         <label for="gender">Filter Gender</label>
         <Select
@@ -132,7 +142,9 @@ const Outfit = () => {
           </>
         )}
       </div>
-    </div>
+    </div>) : navigate('/login')}
+    </>
+    
   );
 };
 

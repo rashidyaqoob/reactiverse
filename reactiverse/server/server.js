@@ -601,9 +601,9 @@ const verifyToken = (req, res, next) => {
 
 module.exports = verifyToken;
 
-app.get("/login",verifyToken, (req, res) => {
+app.get("/auth",verifyToken, (req, res) => {
   // Token is verified, handle the homepage logic
-  res.json({message: "Welcome to the homepage!"});
+  res.json({status : 200});
 });
 
 function checkUser(email, password, usersData) {
@@ -622,8 +622,7 @@ app.post("/login", (req, res) => {
     if (loggedIn) {
       res.status(200).json({
         user: true,
-        token: generateToken({ email, password }, process.env.JWT_SECRET_KEY),
-      });
+        token: generateToken({ email, password }, process.env.JWT_SECRET_KEY)});
     } else {
       res.status(200).json({
         user: false,

@@ -3,6 +3,7 @@ import "./Login.scss";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../utils/base-url/BASE_URL";
 import { Link, useNavigate } from "react-router-dom";
+import { CheckAuth } from "../../utils/check-auth/CheckAuth";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,11 +12,7 @@ function Login() {
 
   useEffect(() => {
     // Update local storage when token changes
-    if (token) {
-      localStorage.setItem('jwtToken', token);
-    } else {
-      localStorage.removeItem('jwtToken');
-    }
+   CheckAuth(token)
   }, [token]);
 
   const navigate = useNavigate();
@@ -37,7 +34,8 @@ function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.token);
+        setData(data)
+        console.log(data)
         setToken(data.token)
       });
   };
