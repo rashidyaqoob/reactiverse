@@ -624,7 +624,7 @@ app.post("/login", (req, res) => {
       res.status(200).json({
         user: true,
         token: generateToken({ email, password }, process.env.JWT_SECRET_KEY, {
-          expiresIn: "20s",
+          expiresIn: "30s",
         }),
       });
     } else {
