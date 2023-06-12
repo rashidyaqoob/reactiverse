@@ -3,12 +3,14 @@ import "./Sign-up.scss";
 import { FirebaseAuth } from "../../utils/firebase-app/firebase.jsx";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../utils/base-url/BASE_URL";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [firstName, setFirstname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
   const formInfo = {
     username: firstName,
     password: password,
@@ -18,23 +20,25 @@ function SignUp() {
   const [data, setData] = useState({});
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await fetch(`${BASE_URL}/sign-up`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formInfo),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data);
-        });
 
-      // Handle the response as needed
-    } catch (error) {
-      console.error("Error registering user:", error);
-    }
+    await fetch(`${BASE_URL}/sign-up`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+        if (!data.message) {
+          alert("Password and Confirm password don't match");
+          setPassword("");
+          setConfirmPassword("");
+        }
+      });
+    // Handle the response as needed
   };
 
   return (
@@ -108,7 +112,16 @@ function SignUp() {
           className="signup-form__element submit"
         ></input>
       </form>
-      <div>{data.message}</div>
+      {data.message ? (
+        <div className="success-block">
+          <p>{data.message}</p>
+        </div>
+      ) : (
+        ""
+      )}
+      <Link className="btn-login" to="/login">
+            Click here to Login!
+          </Link>
     </div>
   );
 }

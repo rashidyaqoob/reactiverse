@@ -1,6 +1,6 @@
 @import '../../base-styles/globals.scss';
 
-.signup-form-container {
+.login-form-container {
     margin: 100px auto;
     max-width: 488px;
     display: flex;
@@ -10,7 +10,7 @@
     border-radius: 20px;
     background-color: #57697c;
 
-    .signup-form {
+    .login-form {
         max-width: 768px;
     }
 
@@ -37,17 +37,8 @@
         }
     }
 
-    .signup-form__name,
-    .signup-form__password-container {
-        display: flex;
-        justify-content: space-between;
-        @include respond((max: $tablet)) {
-            flex-direction: column;
-        }
-    }
-
-    .signup-form__element {
-        width: 80%;
+    .login-form__element {
+      width: calc(100% - 25px);
         padding: 10px 14px;
         border: 2px solid $primary-color;
         color: $primary-color;
@@ -65,28 +56,24 @@
         color: $secondary-color;
     }
 
-    .signup-form__2-elem {
-        .signup-form__element {
+    .login-form__2-elem {
+        .login-form__element {
             border-radius: 10px;
-            width: calc(100% - 25px);
-
-           
         }
         &:not(:last-child) {
             margin-right: 20px;
         }
-        
-        width: calc(50% - 50px);
+      
         @include respond((max: $tablet)) {
             width: 100%;
         }
     }
 
-    .signup-form__element {
+    .login-form__element {
         border-radius: 10px;
     }
 
-    .signup-form__email-container {
+    .login-form__email-container {
         display: flex;
         flex-direction: column;
         
