@@ -6,7 +6,7 @@ import Todo from "./Todo";
 export const Actions = {
   ADD_TODO: "add-todo",
   TOGGLE_TODO: "toggle-todo",
-  DELETE_TODO: 'delete-todo'
+  DELETE_TODO: "delete-todo",
 };
 
 function reducer(todos, action) {
@@ -21,9 +21,7 @@ function reducer(todos, action) {
         return todo;
       });
     case Actions.DELETE_TODO:
-      return todos.filter(todo => 
-        todo.id !== action.payload.id
-      );
+      return todos.filter((todo) => todo.id !== action.payload.id);
 
     default:
       return console.error("No case submitted");
@@ -47,7 +45,12 @@ const UseReducer = () => {
 
   return (
     <div className="use-reducer">
-      <p> UseReducer is typically used as an alternative to the useState hook when the state logic becomes more intricate or involves multiple related values. </p>
+      <p>
+        {" "}
+        UseReducer is typically used as an alternative to the useState hook when
+        the state logic becomes more intricate or involves multiple related
+        values.{" "}
+      </p>
       <p>Enter Todo for the day</p>
       <form onSubmit={handleSubmit}>
         <input
@@ -61,7 +64,6 @@ const UseReducer = () => {
       {todos.map((todo) => {
         return <Todo todo={todo} dispatch={dispatch} />;
       })}
-      
     </div>
   );
 };

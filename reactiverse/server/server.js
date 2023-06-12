@@ -553,9 +553,11 @@ app.post("/sign-up", (req, res) => {
     let users = JSON.parse(usersData);
     const registeredUser = checkUser(email, password, users);
 
-    if(registeredUser) {
-      res.status(201).json({ message: "Already registered! Please try another email" });
-    }else {
+    if (registeredUser) {
+      res
+        .status(201)
+        .json({ message: "Already registered! Please try another email" });
+    } else {
       const newUser = { username, password, email };
       users.push(newUser);
 
@@ -568,7 +570,6 @@ app.post("/sign-up", (req, res) => {
       // Send a response indicating successful registration
       res.status(200).json({ message: "User registered successfully" });
     }
-    
   }
 
   // Add the new user to the users array
@@ -601,9 +602,9 @@ const verifyToken = (req, res, next) => {
 
 module.exports = verifyToken;
 
-app.get("/auth",verifyToken, (req, res) => {
+app.get("/auth", verifyToken, (req, res) => {
   // Token is verified, handle the homepage logic
-  res.json({status : 200});
+  res.json({ status: 200 });
 });
 
 function checkUser(email, password, usersData) {
@@ -617,12 +618,15 @@ app.post("/login", (req, res) => {
   const { email, password } = req.body;
   try {
     const usersData = JSON.parse(fs.readFileSync("users.json"));
-    
+
     const loggedIn = checkUser(email, password, usersData);
     if (loggedIn) {
       res.status(200).json({
         user: true,
-        token: generateToken({ email, password }, process.env.JWT_SECRET_KEY)});
+        token: generateToken({ email, password }, process.env.JWT_SECRET_KEY, {
+          expiresIn: "20s",
+        }),
+      });
     } else {
       res.status(200).json({
         user: false,

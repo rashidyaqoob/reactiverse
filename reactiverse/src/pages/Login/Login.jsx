@@ -12,7 +12,7 @@ function Login() {
 
   useEffect(() => {
     // Update local storage when token changes
-   CheckAuth(token)
+    CheckAuth(token);
   }, [token]);
 
   const navigate = useNavigate();
@@ -34,13 +34,11 @@ function Login() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setData(data)
-        console.log(data)
-        setToken(data.token)
+        setData(data);
+        console.log(data);
+        setToken(data.token);
       });
   };
-
-
 
   return (
     <div className="login-form-container">
