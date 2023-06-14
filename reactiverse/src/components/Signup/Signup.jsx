@@ -1,30 +1,23 @@
-import { useState } from "react";
-import { getAuth } from "firebase/auth";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../pages/Login/Logincontext";
 
 function HandleSignInBtn() {
-  const [userLoggedIn, setUser] = useState(false);
-  const [state, setState] = useState("Sign In");
-  function buttonHandle() {
-    const user = getAuth().currentUser;
-    console.log(user);
-    if (user) {
-      setState("Sign Out");
-      setUser(true);
-
-      console.log(getAuth().currentUser);
-    } else {
-      setState("Sign in");
-      setUser(false);
+  const { isLoggedIn, logout } = useContext(AuthContext);
+  console.log("islogged in", isLoggedIn);
+  function buttonHandle(e) {
+    if (isLoggedIn) {
+      e.preventDefault();
+      logout();
     }
   }
   return (
     <Link
-      to={userLoggedIn ? "/" : "/sign-up"}
+      to={isLoggedIn ? "/" : "/login"}
       className="user-auth__btn"
       onClick={buttonHandle}
     >
-      {state}
+      {isLoggedIn ? "Log Out" : "Log In"}
     </Link>
   );
 }

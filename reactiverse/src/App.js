@@ -10,6 +10,7 @@ import Hooks from "./pages/Hooks/Hooks.jsx";
 import HookRoutes from "./pages/Hooks/Hooks-routes.jsx";
 import { useState, useEffect } from "react";
 import Login from "./pages/Login/Login.jsx";
+import { AuthProvider } from "./pages/Login/Logincontext.jsx";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -20,22 +21,24 @@ function App() {
       .then((data) => setMessage(data.message));
   }, []);
   return (
-    <div className="App">
-      <h1>{message}</h1>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/outfit" element={<About />} />
-          <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/hooks" element={<Hooks />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-        <HookRoutes />
-        <Footer />
-      </BrowserRouter>
-    </div>
+    <AuthProvider>
+      <div className="App">
+        <h1>{message}</h1>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/outfit" element={<About />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/hooks" element={<Hooks />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+          <HookRoutes />
+          <Footer />
+        </BrowserRouter>
+      </div>
+    </AuthProvider>
   );
 }
 
