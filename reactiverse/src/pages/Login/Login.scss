@@ -84,19 +84,15 @@
         }
 
     }
-
-    .success-block {
-      display: flex;
+    .block-sign-up {
       justify-content: center;
-      margin-top: 12px;
+      margin-top: 20px;
+      color: $white;
+      display: flex;
 
-      p {
-        margin-right: 8px;
-        color: $white;
-      }
-
-      .btn-login {
+      .btn-sign-up {
         text-decoration: underline;
+        margin-left: 8px;
 
         &:hover {
           text-decoration: none;

@@ -30,25 +30,8 @@ const Outfit = () => {
     { value: "nike", label: "Nike" },
   ];
 
-  const handleAuthCheck = async () => {
-    try {
-      const auth = await CheckAuthExpiry();
-      if (auth === 200) {
-        setStatus(200);
-        console.log("login");
-        login();
-      } else {
-        setStatus(0);
-        console.log("logout");
-        logout();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
-    handleAuthCheck();
     fetch(`${BASE_URL}/outfit`)
       .then((res) => res.json())
       .then((data) => {
@@ -162,7 +145,7 @@ const Outfit = () => {
           </div>
         </>
       ) : (
-        navigate("/login")
+        <Login />
       )}
     </>
   );

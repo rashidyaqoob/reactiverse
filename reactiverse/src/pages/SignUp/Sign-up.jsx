@@ -112,16 +112,18 @@ function SignUp() {
           className="signup-form__element submit"
         ></input>
       </form>
+      <div className="success-block">
       {data.message ? (
-        <div className="success-block">
+        
           <p>{data.message}</p>
-        </div>
+       
       ) : (
         ""
       )}
-      <Link className="btn-login" to="/login">
-            Click here to Login!
-          </Link>
+        <Link className="btn-login" to="/login">
+          Click here to Login!
+        </Link>
+      </div>
     </div>
   );
 }
