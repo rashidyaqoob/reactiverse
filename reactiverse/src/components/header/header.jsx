@@ -101,6 +101,9 @@ function Header() {
             </nav>
             <div className="user-auth">
               <HandleSignInBtn />
+              <Link to="/sign-up" className="user-auth__register">
+                Register with us
+              </Link>
             </div>
           </div>
           <div className="mobile-hamburger" onClick={handleHamburger}>

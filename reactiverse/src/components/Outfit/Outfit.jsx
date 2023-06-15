@@ -1,15 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
-import { useState, useEffect } from "react";
-import { useNavigate, useLocation, useHistory } from "react-router-dom";
-
+import { useState, useEffect, useContext } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Select from "react-select";
 import Outfitcard from "./Outfit-card";
-import {
-  CheckAuthExpiry,
-  CheckAuth,
-} from "../../utils/check-auth/CheckAuth.jsx";
+import { CheckAuthExpiry } from "../../utils/check-auth/CheckAuth.jsx";
 import { BASE_URL } from "../../utils/base-url/BASE_URL";
+import { AuthContext } from "../../pages/Login/Logincontext";
+import Login from "../../pages/Login/Login";
 
 const Outfit = () => {
   const [men, setMen] = useState([]);
@@ -19,6 +17,7 @@ const Outfit = () => {
   const [status, setStatus] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const { isLoggedIn, login, logout } = useContext(AuthContext);
 
   const optionsGender = [
     { value: "", label: "All" },
@@ -36,9 +35,12 @@ const Outfit = () => {
       const auth = await CheckAuthExpiry();
       if (auth === 200) {
         setStatus(200);
-        navigate("/outfit");
+        console.log("login");
+        login();
       } else {
         setStatus(0);
+        console.log("logout");
+        logout();
       }
     } catch (error) {
       console.log(error);
@@ -89,7 +91,7 @@ const Outfit = () => {
 
   return (
     <>
-      {status === 200 ? (
+      {isLoggedIn === true ? (
         <>
           <div className="outfits-container">
             <div className="outfit-dropdown">

@@ -1,21 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./Login.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { BASE_URL } from "../../utils/base-url/BASE_URL";
-import { Link, useNavigate } from "react-router-dom";
-import { CheckAuth } from "../../utils/check-auth/CheckAuth";
+import { useNavigate } from "react-router-dom";
+import { CheckAuth, CheckAuthExpiry } from "../../utils/check-auth/CheckAuth";
+import { AuthContext } from "../../pages/Login/Logincontext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
+  const navigate = useNavigate("");
+  const { isLoggedIn, login, logout } = useContext(AuthContext);
 
   useEffect(() => {
     // Update local storage when token changes
     CheckAuth(token);
   }, [token]);
 
-  const navigate = useNavigate();
   const loginInfo = {
     email: email,
     password: password,
@@ -35,10 +37,17 @@ function Login() {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        console.log(data);
+        if (data.user === true) {
+          login();
+        } else {
+          logout();
+        }
         setToken(data.token);
       });
   };
+  if (isLoggedIn) {
+    navigate("/");
+  }
 
   return (
     <div className="login-form-container">
@@ -76,7 +85,7 @@ function Login() {
           className="login-form__element submit"
         ></input>
       </form>
-      {data.user === true && navigate("/")}
+      {data.user}
       {data.user === false && <p>No user found</p>}
       {data.token}
     </div>

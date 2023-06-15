@@ -1,5 +1,6 @@
 import { BASE_URL } from "../base-url/BASE_URL";
-
+import { AuthContext } from "../../pages/Login/Logincontext";
+import { useContext } from "react";
 export const CheckAuth = (token) => {
   // const expirationTime = new Date().getTime() + 30 * 1000;
   // const expirationToken = expirationTime - new Date().getTime()
@@ -15,6 +16,7 @@ export const CheckAuthExpiry = async () => {
   try {
     const response = await fetch(`${BASE_URL}/auth`, { headers });
     const data = await response.json();
+
     if (data.message === "jwt expired") {
       return data.message;
     } else if (data.status === 200) {
