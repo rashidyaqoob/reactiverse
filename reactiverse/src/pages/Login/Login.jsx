@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import "./Login.scss";
 import { useState, useEffect, useContext } from "react";
-import { BASE_URL } from "../../utils/base-url/BASE_URL";
-import { useNavigate } from "react-router-dom";
+import { BASE_URL, REACT_URL } from "../../utils/base-url/BASE_URL";
+import { Link, useNavigate } from "react-router-dom";
 import { CheckAuth, CheckAuthExpiry } from "../../utils/check-auth/CheckAuth";
 import { AuthContext } from "../../pages/Login/Logincontext";
 
@@ -39,15 +39,17 @@ function Login() {
         setData(data);
         if (data.user === true) {
           login();
-        } else {
-          logout();
         }
         setToken(data.token);
       });
   };
-  if (isLoggedIn) {
-    navigate("/");
+  if (isLoggedIn ) {
+    if (window.location.href === `${REACT_URL}/outfit`) {
+      navigate(-1);
+    } else {
+    navigate('/')
   }
+}
 
   return (
     <div className="login-form-container">
@@ -84,10 +86,12 @@ function Login() {
           value="Login"
           className="login-form__element submit"
         ></input>
+        <div className="block-sign-up"> <p>Not a user? </p> 
+            <Link className="btn-sign-up" to="/sign-up">
+            Click here to Register!
+          </Link> </div>
       </form>
-      {data.user}
       {data.user === false && <p>No user found</p>}
-      {data.token}
     </div>
   );
 }
