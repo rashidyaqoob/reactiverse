@@ -4,7 +4,7 @@ import { AuthContext } from "../../pages/Login/Logincontext";
 
 function HandleSignInBtn() {
   const { isLoggedIn, logout } = useContext(AuthContext);
-  console.log("islogged in", isLoggedIn);
+
   function buttonHandle(e) {
     if (isLoggedIn) {
       e.preventDefault();

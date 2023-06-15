@@ -45,7 +45,6 @@ function Login() {
         setToken(data.token);
       });
   };
-
   if (isLoggedIn) {
     navigate("/");
   }

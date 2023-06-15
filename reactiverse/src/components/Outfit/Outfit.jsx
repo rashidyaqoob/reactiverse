@@ -17,7 +17,7 @@ const Outfit = () => {
   const [status, setStatus] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const { isLoggedIn, logout } = useContext(AuthContext);
+  const { isLoggedIn, login, logout } = useContext(AuthContext);
 
   const optionsGender = [
     { value: "", label: "All" },
@@ -35,8 +35,12 @@ const Outfit = () => {
       const auth = await CheckAuthExpiry();
       if (auth === 200) {
         setStatus(200);
+        console.log("login");
+        login();
       } else {
         setStatus(0);
+        console.log("logout");
+        logout();
       }
     } catch (error) {
       console.log(error);
@@ -87,7 +91,7 @@ const Outfit = () => {
 
   return (
     <>
-      {status === 200 && isLoggedIn ? (
+      {isLoggedIn === true ? (
         <>
           <div className="outfits-container">
             <div className="outfit-dropdown">
@@ -158,7 +162,7 @@ const Outfit = () => {
           </div>
         </>
       ) : (
-        <Login />
+        navigate("/login")
       )}
     </>
   );

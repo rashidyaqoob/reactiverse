@@ -23,30 +23,13 @@ export const AuthProvider = ({ children }) => {
     // Remove the login status from local storage
     localStorage.removeItem("isLoggedIn");
   };
-  console.log("Context", isLoggedIn);
-
-  const handleAuthCheck = async () => {
-    try {
-      const auth = await CheckAuthExpiry();
-      if (auth !== 200) {
-        logout();
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const authValue = {
+    isLoggedIn,
+    login,
+    logout,
   };
 
-  handleAuthCheck();
-
   return (
-    <AuthContext.Provider
-      value={{
-        isLoggedIn,
-        login,
-        logout,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
   );
 };

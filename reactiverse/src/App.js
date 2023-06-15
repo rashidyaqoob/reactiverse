@@ -8,22 +8,17 @@ import SignUp from "./pages/SignUp/Sign-up.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Hooks from "./pages/Hooks/Hooks.jsx";
 import HookRoutes from "./pages/Hooks/Hooks-routes.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Login from "./pages/Login/Login.jsx";
 import { AuthProvider } from "./pages/Login/Logincontext.jsx";
+import { AuthContext } from "./pages/Login/Logincontext.jsx";
+
+import { CheckAuthExpiry } from "./utils/check-auth/CheckAuth.jsx";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetch("http://localhost:8000/message")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message));
-  }, []);
   return (
     <AuthProvider>
       <div className="App">
-        <h1>{message}</h1>
         <BrowserRouter>
           <Header />
           <Routes>
