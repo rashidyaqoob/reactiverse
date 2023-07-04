@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/header/header.jsx";
 import About from "./pages/About.jsx";
 import ContactUs from "./pages/Contact-us.jsx";
@@ -8,12 +8,8 @@ import SignUp from "./pages/SignUp/Sign-up.jsx";
 import Home from "./pages/Home/Home.jsx";
 import Hooks from "./pages/Hooks/Hooks.jsx";
 import HookRoutes from "./pages/Hooks/Hooks-routes.jsx";
-import { useState, useEffect, useContext } from "react";
 import Login from "./pages/Login/Login.jsx";
 import { AuthProvider } from "./pages/Login/Logincontext.jsx";
-import { AuthContext } from "./pages/Login/Logincontext.jsx";
-
-import { CheckAuthExpiry } from "./utils/check-auth/CheckAuth.jsx";
 
 function App() {
   return (
@@ -30,6 +26,7 @@ function App() {
             <Route path="/login" element={<Login />} />
           </Routes>
           <HookRoutes />
+
           <Footer />
         </BrowserRouter>
       </div>
