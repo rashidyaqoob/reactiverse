@@ -16,10 +16,10 @@ export const AuthProvider = ({ children }) => {
   const handleAuthCheck = async () => {
     try {
       const auth = await CheckAuthExpiry();
-      console.log("auth",auth)
+
       if (auth !== 200) {
         // setStatus(200);
-        logout()
+        logout();
       }
     } catch (error) {
       console.log(error);
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   };
   const login = () => {
     // Perform the login logic
-    
+
     setIsLoggedIn(true);
     // Store the login status in local storage
     localStorage.setItem("isLoggedIn", JSON.stringify(true));

@@ -12,23 +12,19 @@ export const CheckAuth = (token) => {
 export const CheckAuthExpiry = async () => {
   const token = localStorage.getItem("jwtToken");
   const headers = { Authorization: token };
-  console.log("data")
 
   try {
     const response = await fetch(`${BASE_URL}/auth`, { headers });
     const data = await response.json();
-    console.log(data.message.message)
 
     if (data.message.message === "jwt expired") {
       return data.message.message;
-      
     } else if (data.status === 200) {
-      console.log("200",data)
       return data.status;
     }
   } catch (error) {
     // Handle any error that occurs during the API request
-    console.log(error);
+    // console.log(error);
     return null;
   }
 };
