@@ -1,0 +1,25 @@
+{
+	"extends": "stylelint-config-standard-scss",
+	"customSyntax": "postcss-lit",
+	"plugins": [
+		"stylelint-order"
+	],
+	"rules": {
+		"order/properties-alphabetical-order": true,
+		"declaration-property-unit-allowed-list": {
+			"/^border/": [
+				"px"
+			],
+			"/^padding|^gap/": [
+				"rem"
+			]
+		},
+		"unit-allowed-list": [
+			"%",
+			"deg",
+			"px",
+			"rem",
+			"ms"
+		]
+	}
+}
