@@ -60,7 +60,7 @@ function Header() {
     <>
       <header
         className={`header ${isHomePage ? "header-transparent" : ""} ${
-          isSticky ? "sticky" : "fixed"
+          isSticky ? "sticky" : ""
         }`}
         style={{ position: isSticky ? "fixed" : "" }}
       >
