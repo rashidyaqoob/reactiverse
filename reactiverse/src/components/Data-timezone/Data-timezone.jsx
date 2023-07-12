@@ -9,9 +9,6 @@ function DateTimezone() {
     zone: "America/New_York",
   }); // Specific date and time in a particular timezone
 
-  console.log("currentDateTime", currentDateTime);
-  console.log("specificDateTime", specificDateTime);
-
   const convertedDateTime = specificDateTime.toLocal();
 
   const formattedDateTime = convertedDateTime.toLocaleString(

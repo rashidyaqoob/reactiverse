@@ -25,8 +25,6 @@ const cache = new CellMeasurerCache({
   defaultHeight: 100,
 });
 
-console.log(cache);
-
 const list = Array(rowCount)
   .fill()
   .map((val, idx) => {
