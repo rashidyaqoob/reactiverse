@@ -1,5 +1,6 @@
 import Chart from "../components/Chart/Chart.jsx";
 import { ChartPie } from "../components/Chart/ChartPie.jsx";
+import PollForm from "../components/Chart/PollForm.jsx";
 import VirtualList from "../components/virtual-list/virtual-list";
 
 function ContactUs() {
@@ -7,9 +8,10 @@ function ContactUs() {
     <div>
       This is contact us page
       <h1>Virtual List</h1>
-      <div className='grid md:grid-cols-2 gap-4 sm:gap-8'>
-        <div className='flex bg-bubbles rounded border border-gray-700 p-4 md:p-8'>
-          <ChartPie/>
+      <PollForm />
+      <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
+        <div className="flex bg-bubbles rounded border border-gray-700 p-4 md:p-8">
+          <ChartPie />
           {/* <Chart data={[
               {
                 name: 'Cluster 1',
@@ -33,7 +35,7 @@ function ContactUs() {
               },
             ].sort((a, b) => a.value - b.value)}/> */}
         </div>
-      </div>      
+      </div>
       <VirtualList />
     </div>
   );
