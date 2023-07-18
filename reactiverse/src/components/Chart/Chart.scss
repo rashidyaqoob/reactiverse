@@ -1,0 +1,30 @@
+@import '../../base-styles/globals.scss';
+
+div {
+  // background: conic-gradient(red 36deg, orange 36deg 170deg, yellow 170deg);
+  // border-radius: 50%;
+}
+
+.chart-pie {
+  width: 700px;
+  height: 500px;
+  margin: auto;
+}
+
+.chart-pie button {
+  margin-right: 30px;
+}
+
+.pollform {
+  max-width: 700px;
+  margin: auto;
+}
+
+.pollform .form {
+  margin-bottom: 20px;
+}
+
+.pollform .button-submit {
+  margin-top: 20px;
+  cursor: pointer;
+}
