@@ -1,9 +1,11 @@
 import React from "react";
 import "./Chart.scss";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
+import { Pie, Bar } from "react-chartjs-2";
+import { Chart as ReactChartJs } from "react-chartjs-2";
+import { CategoryScale } from "chart.js";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale);
 
 export function ChartPie({ applesLength, mangoesLength, orangesLength }) {
   const data = {
@@ -26,10 +28,10 @@ export function ChartPie({ applesLength, mangoesLength, orangesLength }) {
       },
     ],
   };
-  console.log("inChartpie", applesLength, orangesLength, mangoesLength);
+
   return (
     <div className="chart-pie">
-      <Pie data={data} />
+      <ReactChartJs id="pie-chart" type="pie" data={data} />
     </div>
   );
 }
