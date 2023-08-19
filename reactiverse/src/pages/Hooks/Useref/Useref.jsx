@@ -26,7 +26,12 @@ function Useref() {
     <>
       <div className="hook__useref">
         <h1>Use Ref Hook</h1>
-        <p>The useRef hook in React provides a way to create mutable references that persist across re-renders of a component. It allows you to access and modify DOM elements or other values without triggering re-rendering.</p>
+        <p>
+          The useRef hook in React provides a way to create mutable references
+          that persist across re-renders of a component. It allows you to access
+          and modify DOM elements or other values without triggering
+          re-rendering.
+        </p>
         <div>
           <div>
             <input

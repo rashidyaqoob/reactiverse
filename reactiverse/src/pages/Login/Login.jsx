@@ -43,13 +43,13 @@ function Login() {
         setToken(data.token);
       });
   };
-  if (isLoggedIn ) {
+  if (isLoggedIn) {
     if (window.location.href === `${REACT_URL}/outfit`) {
       navigate(-1);
     } else {
-    navigate('/')
+      navigate("/");
+    }
   }
-}
 
   return (
     <div className="login-form-container">
@@ -86,10 +86,13 @@ function Login() {
           value="Login"
           className="login-form__element submit"
         ></input>
-        <div className="block-sign-up"> <p>Not a user? </p> 
-            <Link className="btn-sign-up" to="/sign-up">
+        <div className="block-sign-up">
+          {" "}
+          <p>Not a user? </p>
+          <Link className="btn-sign-up" to="/sign-up">
             Click here to Register!
-          </Link> </div>
+          </Link>{" "}
+        </div>
       </form>
       {data.user === false && <p>No user found</p>}
     </div>
