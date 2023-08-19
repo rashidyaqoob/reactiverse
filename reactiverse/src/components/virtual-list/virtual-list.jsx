@@ -41,18 +41,21 @@ const list = Array(rowCount)
     };
   });
 
-const grid = Array(rowCount).fill().map((val, idx) => (
-  Array(columnCount).fill().map((val, idx) => ({
-    id: idx,
-    name: 'John Doe',
-    image: 'http://via.placeholder.com/40',
-    text: loremIpsum({
-      count: 4,
-      units: 'word'
-    })
-  }))
-));
-
+const grid = Array(rowCount)
+  .fill()
+  .map((val, idx) =>
+    Array(columnCount)
+      .fill()
+      .map((val, idx) => ({
+        id: idx,
+        name: "John Doe",
+        image: "http://via.placeholder.com/40",
+        text: loremIpsum({
+          count: 4,
+          units: "word",
+        }),
+      }))
+  );
 
 function Collapsible({ children, title, onChange }) {
   const [expanded, setExpanded] = useState(false);
@@ -128,8 +131,8 @@ function cellSizeAndPositionGetter({ index }) {
     height: cellHeight,
     width: cellWidth,
     y: index * cellHeight,
-    x: Math.floor(Math.random() * 10) * cellWidth
-  }
+    x: Math.floor(Math.random() * 10) * cellWidth,
+  };
 }
 
 function VirtualList() {
@@ -164,14 +167,15 @@ function VirtualList() {
                       //   onScroll={onScroll}
                       //   rowCount={grid.length}
                       //   columnCount={grid[0].length}/>
-                    // );
-                    <Collection
-                      width={width}
-                      height={height}
-                      cellRenderer={renderCellCollection}
-                      cellCount={list.length}
-                      cellSizeAndPositionGetter={cellSizeAndPositionGetter}/>
-                    )
+                      // );
+                      <Collection
+                        width={width}
+                        height={height}
+                        cellRenderer={renderCellCollection}
+                        cellCount={list.length}
+                        cellSizeAndPositionGetter={cellSizeAndPositionGetter}
+                      />
+                    );
                   }}
                 </AutoSizer>
               </div>

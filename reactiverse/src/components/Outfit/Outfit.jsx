@@ -30,7 +30,6 @@ const Outfit = () => {
     { value: "nike", label: "Nike" },
   ];
 
-
   useEffect(() => {
     fetch(`${BASE_URL}/outfit`)
       .then((res) => res.json())
