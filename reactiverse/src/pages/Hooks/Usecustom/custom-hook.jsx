@@ -4,7 +4,7 @@ import './Usecustom.scss'
 function StoreValue() {
   const [name, setName] = useLocalStorage("name", "");
   return (
-    <div class="use-custom-hook">
+    <div className="use-custom-hook">
       <h1>Application of Custom hooks </h1>
       <input
         type="text"

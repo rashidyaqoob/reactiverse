@@ -78,13 +78,13 @@ const Outfit = () => {
         <>
           <div className="outfits-container">
             <div className="outfit-dropdown">
-              <label for="gender">Filter Gender</label>
+              <label htmlFor="gender">Filter Gender</label>
               <Select
                 options={optionsGender}
                 touchUi={false}
                 onChange={handleFilter}
               />
-              <label for="gender">Filter Brand</label>
+              <label htmlFor="gender">Filter Brand</label>
               <Select
                 options={optionsBrand}
                 touchUi={false}
