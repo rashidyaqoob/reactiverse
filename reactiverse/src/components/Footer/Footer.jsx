@@ -5,17 +5,17 @@ import Subscriptionform from "../Forms/SubscriptionForm.jsx";
 
 const Footer = () => {
   return (
-    <div class="footer">
-      <div class="footer-primary">
-        <div class="footer-primary__logo">
-          <h1 class="footer-primary__logo-title">
+    <div className="footer">
+      <div className="footer-primary">
+        <div className="footer-primary__logo">
+          <h1 className="footer-primary__logo-title">
             <Link to="/">Reactiverse</Link>
           </h1>
-          <p class="footer-primary__logo-description">
+          <p className="footer-primary__logo-description">
             A React learning App for beginners
           </p>
         </div>
-        <div class="footer-primary__links">
+        <div className="footer-primary__links">
           <h2>Links</h2>
           <ul>
             <li>
@@ -32,7 +32,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div class="footer-primary__links">
+        <div className="footer-primary__links">
           <h2>Other</h2>
           <ul>
             <li>
@@ -49,11 +49,11 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div class="footer-primary__form">
+        <div className="footer-primary__form">
           <Subscriptionform />
         </div>
-        <div class="footer-secondary">
-          <ul class="footer-secondary__socail-links">
+        <div className="footer-secondary">
+          <ul className="footer-secondary__socail-links">
             <li>
               <Link to="https://github.com/tehreemfazili">
                 <FaGithub size={22} color="#f8e578" />
@@ -76,7 +76,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <p class="footer-secondary__description">
+        <p className="footer-secondary__description">
           Copyright &#169;Reactiverse. Designed by Us
         </p>
       </div>
