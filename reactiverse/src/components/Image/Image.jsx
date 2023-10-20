@@ -1,7 +1,8 @@
-function Image({ src, altText, width, height, extraClasses }) {
+function Image({ dataTestId, src, altText, width, height, extraClasses }) {
   return (
     <>
       <img
+        data-testid={dataTestId}
         src={src}
         alt={altText}
         width={width}

@@ -1,6 +1,6 @@
 import "./Homepage-banner.scss";
 import Image from "../Image/Image.jsx";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Heading1 from "../Headings/Heading-1";
 
@@ -20,6 +20,7 @@ function HomepageBanner() {
       <div className="homepage-banner">
         <div className="homepage-banner__img-container">
           <Image
+            dataTestId="homepage-banner__img"
             extraClasses="homepage-banner__img"
             src={require("../../assets/images/homepage-banner.jpeg")}
             altText="HomePage Banner"
@@ -34,7 +35,7 @@ function HomepageBanner() {
             {"A platform to dive into React"}
           </p>
           <div className="homepage-banner__btn-container">
-            <Link
+            {/* <Link
               to="https://react.dev/learn"
               className="homepage-banner__react-link"
             >
@@ -42,7 +43,7 @@ function HomepageBanner() {
             </Link>
             <Link to="/blogs" className="homepage-banner__react-link">
               Our Blogs
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

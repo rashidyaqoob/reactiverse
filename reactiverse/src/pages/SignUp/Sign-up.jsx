@@ -46,7 +46,7 @@ function SignUp() {
       <form className="signup-form">
         <div className="signup-form__name">
           <div className="signup-form__2-elem">
-            <label for="firstName">First Name:</label>
+            <label htmlFor="firstName">First Name:</label>
             <input
               type="text"
               id="firstName"
@@ -57,7 +57,7 @@ function SignUp() {
             ></input>
           </div>
           <div className="signup-form__2-elem">
-            <label for="lastName">Last Name:</label>
+            <label htmlFor="lastName">Last Name:</label>
             <input
               type="text"
               id="lastName"
@@ -68,7 +68,7 @@ function SignUp() {
           </div>
         </div>
         <div className="signup-form__email-container">
-          <label for="email">Email:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
@@ -81,7 +81,7 @@ function SignUp() {
         </div>
         <div className="signup-form__password-container">
           <div className="signup-form__2-elem">
-            <label for="password">Password:</label>
+            <label htmlFor="password">Password:</label>
             <input
               type="password"
               id="password"
@@ -93,7 +93,7 @@ function SignUp() {
             ></input>
           </div>
           <div className="signup-form__2-elem">
-            <label for="confirmPassword">Confirm Password:</label>
+            <label htmlFor="confirmPassword">Confirm Password:</label>
             <input
               type="password"
               id="confirmPassword"
