@@ -54,17 +54,17 @@ const Subscriptionform = () => {
 
   return (
     <>
-      <h2 class="form-title">Subscribe</h2>
-      <form className="subscribe-form" action="" onSubmit={handleSubmit}>
+      <h2 className="form-title">Subscribe</h2>
+      <form data-testid="subscribe-form" className="subscribe-form" action="" onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email"
           name="email_address"
-          class="subscribe-form__email"
+          className="subscribe-form__email"
           onChange={handleEmailChange}
           value={email}
         />
-        <button type="submit" class="subscribe-form__btn">
+        <button type="submit" className="subscribe-form__btn">
           Subscribe
         </button>
         {status == "duplicate" ? <p>We've already enabled subscription on this email.</p> : ""}
