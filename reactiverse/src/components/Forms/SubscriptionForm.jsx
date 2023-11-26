@@ -6,7 +6,7 @@ const Subscriptionform = () => {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("");
 
-//   const FORM_URL = "https://app.convertkit.com/forms/5120270/subscriptions";
+  //   const FORM_URL = "https://app.convertkit.com/forms/5120270/subscriptions";
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -31,7 +31,6 @@ const Subscriptionform = () => {
     event.preventDefault();
     retrieveCookie();
 
-
     // const data = new FormData(event.target);
 
     // try {
@@ -55,7 +54,7 @@ const Subscriptionform = () => {
   return (
     <>
       <h2 className="form-title">Subscribe</h2>
-      <form data-testid="subscribe-form" className="subscribe-form" action="" onSubmit={handleSubmit}>
+      <form className="subscribe-form" action="" onSubmit={handleSubmit}>
         <input
           type="email"
           placeholder="Email"
@@ -67,8 +66,16 @@ const Subscriptionform = () => {
         <button type="submit" className="subscribe-form__btn">
           Subscribe
         </button>
-        {status == "duplicate" ? <p>We've already enabled subscription on this email.</p> : ""}
-        {status == "success" ? <p>Congratulations! We've enable subscription on this email.</p> : ""}
+        {status == "duplicate" ? (
+          <p>We've already enabled subscription on this email.</p>
+        ) : (
+          ""
+        )}
+        {status == "success" ? (
+          <p>Congratulations! We've enable subscription on this email.</p>
+        ) : (
+          ""
+        )}
       </form>
     </>
   );

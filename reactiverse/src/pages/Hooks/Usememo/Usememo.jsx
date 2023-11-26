@@ -12,7 +12,12 @@ function Usememo() {
     <>
       <div className="use-memo">
         <h1>Use Memo</h1>
-        <p>The useMemo hook in React is used to memoize the result of a computation. It allows you to optimize performance by avoiding unnecessary calculations or expensive operations when the dependencies of the computation haven’t changed.</p>
+        <p>
+          The useMemo hook in React is used to memoize the result of a
+          computation. It allows you to optimize performance by avoiding
+          unnecessary calculations or expensive operations when the dependencies
+          of the computation haven’t changed.
+        </p>
         <input
           type="number"
           placeholder="Enter the num1"
