@@ -97,6 +97,16 @@ function Header() {
                     Hooks
                   </Link>
                 </li>
+                <li className="navbar-item">
+                  <Link to="/tic-tac-toe" className="navbar-item__link">
+                    Tic Tac Toe
+                  </Link>
+                </li>
+                <li className="navbar-item">
+                  <Link to="/blogs" className="navbar-item__link">
+                    Blogs
+                  </Link>
+                </li>
               </ul>
             </nav>
             <div className="user-auth">

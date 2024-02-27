@@ -1,0 +1,30 @@
+.post {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+}
+
+.post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.author, .body {
+  margin: 10px 0;
+}
+
+.author {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+.body {
+  font-size: 14px;
+  color: #666;
+}
