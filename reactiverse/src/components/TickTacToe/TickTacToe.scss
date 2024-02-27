@@ -1,0 +1,33 @@
+/* TicTacToe.css */
+.square {
+  font-size: 2em;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  margin: -1px 0 0 -1px;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.board {
+  margin-top: 20px;
+}
+
+.board-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.status {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.reset-button {
+  font-size: 1em;
+  margin-top: 10px;
+  cursor: pointer;
+}
