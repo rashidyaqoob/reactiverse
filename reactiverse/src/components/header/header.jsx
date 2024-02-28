@@ -1,6 +1,6 @@
 import "./header.scss";
 import { useState, useEffect } from "react";
-import { Link, Router, useLocation, Switch } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
 import HandleSignInBtn from "../Signup/Signup.jsx";
 
@@ -35,8 +35,6 @@ function Header() {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
 
-  // to turn transparent Navbar into background navbar
-  const [navbarBackground, setNavbarBackground] = useState("transparent");
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
