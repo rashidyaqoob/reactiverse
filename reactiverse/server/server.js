@@ -4,6 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
+const path = require('path');
 
 const app = express();
 
@@ -13,28 +14,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// app.get("/home", (req, res) => {
-//   res.json({
-//     name: "Bill",
-//     age: 99,
-//   });
-// });
-
-// app.post("/home", (req, res) => {
-//   const { username, password, confirmPassword } = req.body;
-//   const { authorization } = req.headers;
-//   if (password !== confirmPassword) {
-//     return res.send({
-//       message: "This is an error!",
-//     });
-//   }
-//   res.send({
-//     username,
-//     password,
-//     confirmPassword,
-//     authorization,
-//   });
-// });
 
 app.get("/message", (req, res) => {
   res.json({
@@ -55,150 +34,7 @@ app.get("/outfit", (req, res) => {
         offer: "60%",
         image: "https://placehold.co/300x200",
       },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
+     
       {
         color: "green",
         size: "medium",
@@ -289,238 +125,7 @@ app.get("/outfit", (req, res) => {
         offer: "60%",
         image: "https://placehold.co/300x200",
       },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "nike",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
-      {
-        color: "green",
-        size: "medium",
-        brand: "puma",
-        rate: "700",
-        offer: "60%",
-        image: "https://placehold.co/300x200",
-      },
+     
       {
         color: "green",
         size: "medium",
@@ -531,6 +136,67 @@ app.get("/outfit", (req, res) => {
       },
     ],
   });
+});
+
+// Store posts in DB
+
+app.use(express.json()); // This line is crucial to be able to parse JSON bodies.
+
+const filePath = path.join(__dirname, 'posts.json');
+console.log("Attempting to create or modify file at:", filePath);
+
+
+app.post("/posts", (req, res) => {
+  console.log("Received POST request to /posts");
+  // Initialize posts array
+  let posts = [];
+
+  // Check if the posts.json file exists
+  if (fs.existsSync(filePath)) {
+    // Read the file (synchronously for simplicity, consider async for production)
+    try {
+      const data = fs.readFileSync(filePath, 'utf8');
+      posts = JSON.parse(data); // Parse existing posts if any
+    } catch (error) {
+      console.error('Error reading or parsing file:', error);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+  }
+
+  const newPost = req.body;
+  posts.push(newPost);
+
+  // Write the updated posts array back to the file
+  fs.writeFile(filePath, JSON.stringify(posts, null, 2), (err) => {
+    if (err) {
+      console.error('Error writing file:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    // Respond with a success message
+    res.status(200).send({message: 'Post added'},);
+  });
+});
+
+
+app.get("/posts", (req, res) => {
+  // Use query parameters instead of body for GET requests
+  const { author, body } = req.query;
+
+  // Assuming the posts are stored in posts.json
+  const filePath = path.join(__dirname, 'posts.json');
+  let posts = JSON.parse(fs.readFileSync(filePath));
+
+  // Filter posts based on author and body if they are provided
+  if (author) {
+    posts = posts.filter(post => post.author === author);
+  }
+
+  if (body) {
+    posts = posts.filter(post => post.body.includes(body));
+  }
+  res.json(posts);
 });
 
 // retrieve data from users.json file
