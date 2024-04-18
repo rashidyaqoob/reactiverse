@@ -10,7 +10,7 @@ function Home() {
   return (
     <>
       <HomepageBanner />
-      <Greet fname={'rashid'} lname={'yaqoob'} />
+      {/* <Greet fname={'rashid'} lname={'yaqoob'} /> */}
       <DateTimezone />
       <LatestUpdateCards />
       <ScrollComp />
