@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Footer.scss";
 import { FaInstagram, FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
-import Subscriptionform from "../Forms/SubscriptionForm.jsx";
+import Subscriptionform from "../Forms/Subscription-Form/SubscriptionForm.jsx";
 
 const Footer = () => {
   return (

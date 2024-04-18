@@ -1,16 +1,14 @@
-import BarChart from "../components/Chart/Barchart.jsx";
-import Chart from "../components/Chart/Chart.jsx";
-import { ChartPie } from "../components/Chart/ChartPie.jsx";
-import PollForm from "../components/Chart/PollForm.jsx";
-import VirtualList from "../components/virtual-list/virtual-list";
+import FormikForm from "../components/Forms/Formik-Form/FormikForm.jsx";
+import ReactHookForm from "../components/Forms/React-Hook-Form/ReactHookForm.jsx";
 
 function ContactUs() {
   return (
     <div>
-      This is contact us page
-      <h1>Virtual List</h1>
-      <PollForm />
-      <VirtualList />
+      <h1>Anywhere in your app!</h1>
+      Formik form Demo
+      <FormikForm/>
+      React Hook Form Demo
+      <ReactHookForm/>
     </div>
   );
 }
