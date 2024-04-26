@@ -1,18 +1,41 @@
-import BarChart from "../components/Chart/Barchart.jsx";
-import Chart from "../components/Chart/Chart.jsx";
-import { ChartPie } from "../components/Chart/ChartPie.jsx";
-import PollForm from "../components/Chart/PollForm.jsx";
-import VirtualList from "../components/virtual-list/virtual-list";
+import { Link } from "react-router-dom";
+import "./Misc.scss";
 
-function Misc() {
+const Misc = () => {
   return (
-    <div>
-      This is contact us page
-      <h1>Virtual List</h1>
-      <PollForm />
-      <VirtualList />
-    </div>
+    <>
+      <div className="misc">
+        <h1>Table of content</h1>
+        <ul className="misc-list">
+          <li className="misc-list__item">
+            <Link to="/misc/tic-tac-toe" className="misc-list__item-link">
+            tic-tac-toe Demo
+            </Link>
+          </li>
+          <li className="misc-list__item">
+            <Link to="/misc/blogs" className="misc-list__item-link">
+            Blogs Demo
+            </Link>
+          </li>
+          <li className="misc-list__item">
+            <Link to="/misc/virtual-list" className="misc-list__item-link">
+              Virtual-list Demo
+            </Link>
+          </li>
+          <li className="misc-list__item">
+            <Link to="/misc/poll-form" className="misc-list__item-link">
+            PollForm Demo
+            </Link>
+          </li>
+          <li className="misc-list__item">
+            <Link to="/misc/Redux" className="misc-list__item-link">
+            Redux Demo
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </>
   );
-}
+};
 
 export default Misc;

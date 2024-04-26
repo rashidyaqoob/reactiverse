@@ -10,8 +10,8 @@ import Hooks from "./pages/Hooks/Hooks.jsx";
 import HookRoutes from "./pages/Hooks/Hooks-routes.jsx";
 import Login from "./pages/Login/Login.jsx";
 import { AuthProvider } from "./pages/Login/Logincontext.jsx";
-import Tictactoe from "./pages/Tictactoe.jsx";
-import Blogs from "./pages/Blogs/Blogs.jsx";
+import Misc from "./pages/Misc/Misc.jsx";
+import MiscRoutes from "./pages/Misc/MiscRoutes.jsx";
 
 function App() {
   return (
@@ -24,13 +24,12 @@ function App() {
             <Route path="/outfit" element={<About />} />
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/hooks" element={<Hooks />} />
-            <Route path="/tic-tac-toe" element={<Tictactoe />} />
+            <Route path="/misc" element={<Misc />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/blogs" element={<Blogs />} />
           </Routes>
           <HookRoutes />
-
+          <MiscRoutes />
           <Footer />
         </BrowserRouter>
       </div>

@@ -96,13 +96,8 @@ function Header() {
                   </Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/tic-tac-toe" className="navbar-item__link">
-                    Tic Tac Toe
-                  </Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/blogs" className="navbar-item__link">
-                    Blogs
+                  <Link to="/misc" className="navbar-item__link">
+                    Misc
                   </Link>
                 </li>
               </ul>
