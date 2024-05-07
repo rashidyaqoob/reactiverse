@@ -4,6 +4,7 @@ import Counter from "../../components/Redux/Components/Counter.jsx";
 import TicTacToe from "../../components/TickTacToe/TickTacToe.jsx";
 import VirtualList from "../../components/virtual-list/virtual-list.jsx";
 import Blogs from "../Blogs/Blogs.jsx";
+import Todo from "../../components/Todo/todo.jsx";
 
 export const MiscRoutes = () => {
   return (
@@ -14,6 +15,7 @@ export const MiscRoutes = () => {
         <Route path="/misc/virtual-list" element={<VirtualList />} />;
         <Route path="/misc/poll-form" element={<PollForm />} />;
         <Route path="/misc/Redux" element={<Counter />} />;
+        <Route path="/misc/todo-app" element={<Todo />} />;
       </Routes>
     </>
   );
