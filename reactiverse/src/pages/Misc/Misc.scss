@@ -1,0 +1,10 @@
+@import '../../base-styles/globals.scss';
+
+
+.misc-list {
+    max-width: 768px;
+    margin: auto;
+    &__item-link {
+        @include primary-link-hover
+    }
+}
