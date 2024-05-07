@@ -28,6 +28,11 @@ const Misc = () => {
             </Link>
           </li>
           <li className="misc-list__item">
+            <Link to="/misc/todo-app" className="misc-list__item-link">
+            Todo App
+            </Link>
+          </li>
+          <li className="misc-list__item">
             <Link to="/misc/Redux" className="misc-list__item-link">
             Redux Demo
             </Link>
