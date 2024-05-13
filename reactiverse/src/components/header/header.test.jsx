@@ -52,3 +52,9 @@ describe("Header", () => {
     expect(window.location.pathname).toBe("/hooks");
   });
 });
+
+it('should render same text passed into title prop', async () => {
+  render(<Header title="My Header"/>);
+  const headingElement = screen.getByTitle("Header")
+  expect (headingElement).toBeInTheDocument();
+});
